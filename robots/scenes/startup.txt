@@ -1,0 +1,519 @@
+*comment Copyright 2010 by Dan Fabulich.
+*comment 
+*comment Dan Fabulich licenses this file to you under the
+*comment ChoiceScript License, Version 1.0 (the "License"); you may
+*comment not use this file except in compliance with the License. 
+*comment You may obtain a copy of the License at
+*comment 
+*comment  http://www.choiceofgames.com/LICENSE-1.0.txt
+*comment 
+*comment See the License for the specific language governing
+*comment permissions and limitations under the License.
+*comment 
+*comment Unless required by applicable law or agreed to in writing,
+*comment software distributed under the License is distributed on an
+*comment "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+*comment either express or implied.
+
+*title Choice of Robots
+*scene_list
+  startup
+  dreams
+  education
+  $ media
+  $ company
+  $ war
+  $ autonomy
+  $ goodbye
+  $ ending
+
+*comment Because of some peculiarities in how variables work in the
+*comment stats screen, I've adopted a convention that global variables
+*comment (those defined here) use_underscores, while locals in the chapters
+*comment (temps) useSnakeCase.
+*create chapter 1
+*create year 2019
+*create dream "none"
+*create doctor false
+*create name "Unnamed"
+*create last_name "Protagonist"
+*create female true
+*create gender "?"
+*create player_pronoun "shi"
+*create player_informal "bloke"
+*create player_formal "person of indeterminate gender"
+*create player_possessive "hir"
+*create player_sir "sir"
+*create fame 0
+*create wealth 0
+*create humanity 90
+*create autonomy 0
+*create military 1
+*create empathy 1
+*create grace 1
+*create met_e_and_josh false
+*create e_relationship 50
+*create e_romantic false
+*create e_name "Elly"
+*create e_last_name "Lao"
+*create ehe "she"
+*create ehim "her"
+*create eer "her"
+*create josh_relationship 50
+*create josh_romantic false
+*create josh_dead false
+*create josh_demo false
+*create juliet_demo false
+*create e_demo false
+*create met_ziegler false
+*create ziegler_relationship 50
+*create met_mark false
+*create article_positive false
+*create mark_relationship 50
+*create mark_romantic false
+*create mark_in_jail false
+*create mark_dead false
+*create juliet_relationship 50
+*create juliet_romantic false
+*create juliet_deal_made false
+*create romance "none"
+*create engaged false
+*create married false
+*create josh_business_name "U.S. Robots"
+*create player_business_name "U.S. Robots"
+*create player_business_started false
+*create ceo false
+*create josh_in_business false
+*create e_in_business false
+*create business_choice "none"
+*create business_successful false
+*create robot_name "your robot"
+*create robot_material "?"
+*create robot_move "?"
+*create robot_leg_adj "?"
+*create robot_power "?"
+*create robot_head "?"
+*create robot_arm "?"
+*create robot_phys_perk "?"
+*create hard_drive "encrypted"
+*create robot_calls_you "Master"
+*create robot_language 0
+*create robot_size 1
+*comment Robot pronouns...
+*create rhe "it"
+*create rer "its"
+*create rhim "it"
+*create in_grad_school false
+*create info_source "nothing"
+*create funding "DARPA"
+*create play_location "park"
+*create interview_player false
+*create crazy_name "Tammy"
+*comment Crazy character pronouns, analogous to robot pronouns...
+*create crhe "he"
+*create crhim "him"
+*create crer "his"
+*create crazy_relationship 50
+*create crazy_romantic false
+*create met_crazy false
+*create crazy_dead false
+*create crazy_in_business false
+*create crazy_in_jail false
+*create met_juliet false
+*create juliet_dead false
+*create intelligent_cars false
+*create went_to_marks_place false
+*create no_company false
+*create met_irons false
+*create irons_relationship 50
+*create cult false
+*create player_arm "hand"
+*create robot_doctors false
+*create cheap_surgery false
+*create us_has_tech false
+*create china_has_tech false
+*create cruised false
+*create china_power 50
+*create supplying_military false
+*create visited_sun false
+*create home "apartment"
+*create car "ancient Toyota Yaris"
+*create foundation false
+*create morale 50
+*create robot_labor false
+*create american_robot_labor false
+*create foreign_robot_labor false
+*create e_in_jail false
+*create e_dead false
+*create citizenship "American"
+*create know_e_f_n false
+*create china_factory false
+*create ts false
+*create nonviolent_support false
+*create companion_bots false
+*create companion_around false
+*create coer "his"
+*create cohim "him"
+*create cohe "he"
+*create companion "none"
+*create companion_relationship 50
+*create companion_romantic false
+*create sold_out false
+*create factory_location "New York"
+*create location "Palo Alto"
+*create war_averted false
+*create start_war_in_jail false
+*create war_lost false
+*create haxproof false
+*create robot_rebelling false
+*create climax "not there yet"
+*create robots_destroyed false
+*create robots_discontinued false
+*create robots_paid_real_salary false
+*create human_supervisors false
+*create awesome_robot_body false
+*create robots_win_revolution false
+*create ziegler_dead false
+*create robot_dead false
+*create robots_controlled false
+*create mom_dead false
+*create irons_dead false
+*create exlab false
+*create database_destroyed false
+*create database_published false
+*create robots_have_database false
+*create schematics_published false
+*create alaska_retaken false
+*create player_controls_all false
+*create robots_are_slaves false
+*create robots_run_things false
+*create alaska_power 50
+*create player_controls_alaska false
+*create wanted_in_america false
+*create mom_survives false
+*create juliet_in_jail false
+*create josh_retired false
+*create our_song "Paper Moon"
+*create robots_in_charge false
+*create alaska_name "Alaska"
+*create achieved false
+
+*comment Variables used exclusively for the story summary screen.
+*comment For variables that change over the course of the game,
+*comment we put copies here that don't change to avoid anachronisms in the story.
+*create log_ch1_evening ""
+*create log_ch1_robot_arm ""
+*create log_ch1_business_choice ""
+*create log_demo_reaction ""
+*create log_ch2_afternoon ""
+*create log_josh_life_story false
+*create log_juliet_sexytimes false
+*create log_ziegler_threatened false
+*create log_ziegler_compliance false
+*create log_ch2_kicked_out false
+*create log_mark_interviews_robot false
+*create log_mark_sexytimes false
+*create log_mark_relationship_started false
+*create log_crazy_life_story false
+*create log_bomb false
+*create log_arm_lost_to_bomb false
+*create log_apartment_blown_up false
+*create log_ch3_kicked_out false
+*create log_ch3_e_joined false
+*create log_ch3_crazy_joined false
+*create log_ch3_sat_night ""
+*create log_ch3_killed_crazy false
+*create log_ch3_costume_party false
+*create log_ch3_costume_party_hero false
+*create log_ch3_romance_ultimatum false
+*create log_ch3_romance_ultimator ""
+*create log_ch3_ultimatum_breakup false
+*create log_ch3_proposal false
+*create log_ch3_proposal_accepted false
+*create log_ch3_new_romance "none"
+*create log_ch3_father_resolution ""
+*create log_ch3_end ""
+*create log_ch4_start_business ""
+*create log_ch4_factory_location ""
+*create log_ch4_first_client "none"
+*create log_ch4_first_successful_client "none"
+*create log_ch4_first_client_pleased false
+*create log_ch4_josh_joined false
+*create log_ch4_josh_undercut false
+*create log_ch4_explosion false
+*create log_ch4_explosion_reason ""
+*create log_ch4_josh_died false
+*create log_ch4_crazy_died false
+*create log_ch4_crazy_caught false
+*create log_ch4_player_resigned false
+*create log_ch4_went_broke false
+*create log_ch4_did_broke_track false
+*create log_ch4_joined_josh false
+*create log_ch4_gave_irons_significant false
+*create log_ch4_cult false
+*create log_ch4_spouse "none"
+*create log_ch4_final_breakup "none"
+*create log_ch5_pardoned false
+*create log_ch5_mark_helps false
+*create log_ch5_rogers_invitation false
+*create log_ch5_agreed_to_fight false
+*create log_ch5_nonviolent_support false
+*create log_ch5_rogers_invitation false
+*create log_ch5_company_supplies false
+*create log_ch5_agreed_to_fight false
+*create log_ch5_nonviolent_support false
+*create log_ch5_e_resigns false
+*create log_ch5_sun_offer false
+*create log_ch5_sun_accepted false
+*create log_ch5_crazy_resigns false
+*create log_ch5_stopped_for_e false
+*create log_ch5_stopped_for_robots false
+*create log_ch5_quit_by_c2 false
+*create log_ch5_worked_for_lab false
+*create log_ch5_lab_project ""
+*create log_ch5_crazy_proposal false
+*create log_ch5_helped_crazy false
+*create log_ch5_incarcerated false
+*create log_ch5_e_interview false
+*create log_ch5_e_captured false
+*create log_ch5_e_fled_to_canada false
+*create log_ch5_juliet_dies false
+*create log_ch5_player_fled_to_canada false
+*create log_ch5_assassination_attempt false
+*create log_ch5_nuclear false
+*create log_ch5_dead_romance "none"
+*create log_6a_e_sad false
+*create log_6a_e_happy false
+*create log_6a_mark_sad false
+*create log_6a_josh_sad false
+*create log_6a_crazy_sad false
+*create log_6a_crazy_happy false
+*create log_6a_juliet_exists false
+*create log_6a_they_fight_crime false
+*create log_6a_player_tried_control false
+*create log_6b_taster_companion false
+*create log_6b_dancing_companion false
+*create log_6b_proposition false
+*create log_6b_proposition_accepted false
+*create log_6b_robots_damaged false
+*create log_6b_when_humans_attack false
+*create log_6b_crazy_attacked false
+*create log_6b_crazy_eats_companion false
+*create log_6b_companion_confiscated false
+*create log_6b_romance_fallout false
+*create log_6b_jealous_romance "none"
+*create log_6b_romance_hail_mary "none"
+*create log_6b_romance_hail_mary_worked false
+*create log_6b_romance_hail_marry false
+*create log_6b_winning_bidder false
+*create log_6c_killed_mark false
+*create log_6c_captured_mark false
+*create log_6c_killed_juliet false
+*create log_6c_killed_e_name false
+*create log_6c_captured_e_name false
+*create log_6c_accepted_support false
+*create log_6c_won_at_first false
+*create log_6c_betrayal false
+*create log_6c_gave_it_away false
+*create log_6c_fled_with_e false
+*create log_6d_josh_killed false
+*create log_6d_juliet_killed false
+*create log_6d_crazy_killed false
+*create log_6d_robots_convinced false
+*create log_6d_revolution_end ""
+*create log_7_choice ""
+*create log_7_extra ""
+*create log_7_end ""
+*create log_death ""
+
+*comment Current total is 1000/1000.
+*achievement pickled visible 5 Pickled
+    Electrified a pickle.  How romantic!
+*achievement bright visible 5 Bright
+    Told a light bulb joke.  How romantic!
+*achievement gadgeteer visible 5 Gadgeteer
+    Made Professor Ziegler reminisce about the Chief.
+*achievement scholar visible 10 Scholar
+    Won a fellowship for having a high robot stat.
+*achievement knifethrower visible 5 Knifethrower
+    Threw throwing knives with Juliet.
+*achievement sidekick visible 10 Sidekick
+    Your robot is pretty good with throwing knives.
+*achievement beeroisseur visible 5 Beeroisseur
+    Tried a dark chocolate coffee porter with Josh.
+*achievement shakespearean visible 5 Shakespearean
+    Discussed Hamlet's age-old question with your robot.
+*achievement ludophile visible 10 Ludophile
+    Your robot interpreted the ending of Braid.
+*achievement warlord visible 10 Warlord
+    Your robot got the conquest ending of Civilization IV.
+*achievement spacefarer visible 10 Spacefarer
+    Your robot got the Alpha Centauri ending of Civilization IV.
+*achievement chatty visible 10 Chatty
+    Your robot passed the Turing Test.
+*achievement celebrity visible 20 Celebrity
+    Mark wrote a positive article about you.
+*achievement bionic visible 10 Bionic
+    It's like the arm you lost, but with more features!
+*achievement rebellious visible 10 Rebellious
+    Your robot sang "Head Like a Hole" in front of a live studio audience.
+*achievement heartbreaker visible 10 Heartbreaker
+    Your robot sang "Maps" in front of a live studio audience.
+*achievement oracle visible 10 Oracle
+    Your robot got compared to drunk Nate Silver.
+*achievement doctor visible 20 Doctor
+    Earned your doctorate.
+*achievement halloweener visible 20 Halloweener
+    Attended Mark's costume party.
+*achievement terrible visible 20 Terrible
+    Died in the earliest possible place.
+*achievement philanthropist visible 20 Philanthropist
+    Started a large charitable organization.
+*achievement cultist visible 20 Cultist
+    Started a cult around your robot.
+*achievement novelist visible 20 Novelist
+    Your novel was a success, thanks to your high Humanity.
+*achievement character visible 10 Character
+    Your robot wrote a successful autobiography.
+*achievement kitty visible 10 KITTy
+    Made a deal to design intelligent cars.
+*achievement spouse visible 20 Spouse
+    Got married!
+*achievement elfin visible 10 Elfin
+    Your robot was a good little elf.
+*achievement beloved visible 10 Beloved
+    Your company threw a surprise party for you.
+*achievement resilient visible 20 Resilient
+    A company you founded survived its startup phase.
+*achievement hero visible 30 Hero
+    Prevented the Sino-American war from starting.
+*achievement rockin visible 10 Rockin'
+    Learned a password.
+*achievement transformative visible 10 Transformative
+    Made robots that are more than meets the eye.
+*achievement numismatist visible 20 Numismatist
+    Earned a coin.
+*achievement hacker visible 10 Hacker
+    Found a vulnerability in the Chinese robots.
+*achievement florist visible 10 Florist
+    Made use of the language of flowers.
+*achievement patriot visible 20 Patriot
+    America won the war.
+*achievement rebel visible 20 Rebel
+    Led the Alaskan Rebellion.
+*achievement escapee visible 20 Escapee
+    Loyal robots freed you from prison.
+*achievement founder visible 20 Founder
+    Started a new country.
+*achievement holiday visible 20 Holiday
+    Got an Alaskan holiday named after you.
+*achievement canuck visible 10 Canuck
+    Fled to Canada.
+*achievement neurosurgeon visible 10 Neurosurgeon
+    Put a piece of your own brain in a robot.
+*achievement pardoned visible 10 Pardoned
+    Freed from jail by order of the President.
+*achievement cleared visible 10 Cleared
+    Got a Top Secret clearance.
+*achievement blockbuster visible 10 Blockbuster
+    Saw the White House blow up.
+*achievement bodyguard visible 10 Bodyguard
+    Escorted the President from the White House.
+*achievement safecracker visible 20 Safecracker
+    Got inside the Top Secret room.
+*achievement kingmaker visible 20 Kingmaker
+    Gave your robot control over all the other robots.
+*achievement spook visible 10 Spook
+    Accessed the government's master intelligence database.
+*achievement gourmand visible 10 Gourmand
+    Your robots tried lutefisk.
+*achievement partybot visible 10 Partybot
+    Your robots got a little tipsy.
+*achievement trio visible 20 Trio
+    Had a very special night with your two loves.
+*achievement robophile visible 10 Robophile
+    Married a robot.
+*achievement hattrick visible 20 Hat Trick
+    Got three achievements at the same time.  And now, four.
+*achievement kinkadian visible 10 Kinkadian
+    Made some popular paintings.
+*achievement crimefighter visible 10 Crimefighter
+    You and the Crusader fight crime.
+*achievement rocker visible 10 Rocker
+    Played Freebird.  Sort of.
+*achievement somethingian visible 10 Somethingian
+    I'm very sure that's a real religion.
+*achievement mastermind visible 20 Mastermind
+    You basically rule the world.
+*achievement filial visible 20 Filial
+    You bought a gift for Mom in her old age.
+*achievement trophy visible 5 Trophy
+    If nobody can judge you, is this achievement meaningless?
+*achievement nostalgic visible 10 Nostalgic
+    Reminisced with a robotic Statue of Liberty.
+*achievement chipped visible 10 Chipped
+    Got a chip in your head.
+*achievement doubled visible 20 Doubled
+    Made a robot double of yourself.
+*achievement celebratory visible 20 Celebratory
+    Celebrated a birthday party.
+*achievement alive visible 10 Alive
+    Made it to the end without dying.
+*achievement lunatic visible 20 Lunatic
+    Your robots headed for the moon.
+*achievement officiant visible 20 Officiant
+    Presided over a human-robot wedding.
+*achievement honored visible 10 Honored
+    You were honored at the White House in your old age.
+*achievement firstmate visible 10 First Mate
+    Went out for coffee with ex-President Irons.
+*achievement singular visible 30 Singular
+    Joined the collective mind of the robots.
+*achievement tragic visible 35 Tragic Hero
+    Finish Chapter 7 with no other achievements.
+    
+
+*create debug false
+
+*temp discount_ends "Jan 2"
+*temp time_stamp timestamp("${discount_ends}, 2015")
+*check_purchase adfree
+*if choice_purchase_supported and not(choice_purchased_adfree)
+  The robots you design will change the world! Will you show them the true meaning of love, or conquer Alaska with your robot army?
+
+  [i]Choice of Robots[/i] is an epic 300,000-word interactive sci-fi novel by Kevin Gold, where your choices control the story. It's entirely text-based—without graphics or sound effects—and fueled by the vast, unstoppable power of your imagination.
+
+  Play out thirty years of your life as a brilliant robot maker, from graduate school near the present day to a future in which your robots have changed everything.  Depending on your choices, your robots may be independent or obedient, clumsy or graceful, empathic or cold…and you yourself may live to an old age happily married or alone with only robots to comfort you.
+
+  Play as male or female, gay or straight, with nine characters to romance, four alternate climax chapters, and over seventy achievements to unlock.
+
+  • Build a unique robot character–you choose everything from its shape to what it calls you
+  *line_break
+  • Instigate or prevent a robotic uprising
+  *line_break
+  • Teach your robots to love humanity, or disdain it
+  *line_break
+  • Build an artificial intelligence suitable to take control of the world's governments
+  *line_break
+  • Start a war against the United States, and win
+  *line_break
+  • Marry a human or an advanced robot, and start a family
+
+  [i]You can play the first two chapters of the game for free. Purchase the rest of the game below.[/i]
+  *if choice_is_advertising_supported
+    [i]Purchasing the rest of the game will also turn off in-game advertisements.[/i]
+  *if choice_time_stamp < time_stamp
+    [b]On sale until ${discount_ends}! Buy now before the price increases![/b]
+
+    *purchase adfree $2.99 purchased
+    *goto page_break
+  *else
+
+    *purchase adfree $4.99 purchased
+  *label page_break
+  *page_break Play Now for Free
+  *advertisement
+
+*label purchased
+
+*goto_scene dreams

@@ -1,0 +1,3069 @@
+*temp nsfSaid false
+
+*comment ————Main————
+
+*gosub dream
+
+*page_break
+
+[i]Some things are in our control and others not.[/i]
+*line_break
+—Epictetus
+
+*page_break Chapter 1:  Assembly
+
+
+*gosub awakening
+*gosub walkToShop
+*gosub construction
+*gosub pronouns
+You look on ${robot_name}'s three-foot-tall ${robot_leg_adj} body with satisfaction.  Now all ${rhe} needs are
+motors and a mind.  The motors will have to wait for tomorrow, but you've spent years in
+graduate school writing the code that would form this robot's mind—you can hardly
+wait to try it out.
+
+*comment gotos here because we will not come back from this
+*if agreedToCaller
+    You take out your smartphone to check the time: it's almost evening.
+    You hurry home to prepare for your dinner with ${caller}.
+    *page_break
+    *if caller = e_name
+        *goto nightWithE
+    *elseif (caller = "Josh")
+        *goto meetWithJosh
+*else
+    *goto teachTheRobotWords
+
+*comment ———-Scenes————
+
+*label dream
+
+Where are you?
+*choice
+    #In the court of the Egyptian god Anubis, answering for my sins.
+        *set dream "Anubis"
+        You see a robotic Anubis, jackal-headed guardian of the Egyptian underworld, seated on a throne of gold-etched silicon in a hall of dark glass. He holds scales on which he weighs a clockwork heart against a silicon brain.
+
+        "Tell me your sins, robot maker," Anubis says. 
+        *choice
+            #"In life, I created robots that could think but not feel.  And so they turned against us."
+                The scales tip toward the brain.
+                *gosub bump "autonomy" 3
+
+                "Yes, you valued the intelligence of your robots above their kindness," Anubis says.  "Look to the glass and remember your sins."
+                
+                The dark glass behind him shimmers, and a vision appears in it: a gang of humanoid robots is moving from room to room in a hospital, destroying any equipment
+                they come across.  When they find the infant ward, containing rows on rows of infant cribs,
+                one robot turns to another.
+
+                "As I told you," says the robot, "it is optimal to fight the humans when they are least able to defend themselves."
+
+                "I cannot fault your computation," says the second robot.
+
+                They raise their clawlike grippers and approach the infants.  The vision fades.
+
+                "I will send you back to relive your life," Anubis says.  "But remember that intelligence without
+                mercy is a dangerous thing."
+
+                *return
+            #"I made a robot to love me unconditionally, but never offered love in kind."
+                Anubis's scales tip toward the heart.
+                *gosub bump "empathy" 3
+
+                "Yes, you created mansions for many unhappy souls," Anubis says.  "Unconditional love is excellent
+                for the beloved, but hard on the heart that loves.
+                Do you remember the robot who loved you?"
+
+                *choice
+                    #"He was so handsome."
+                        *set coer "his"
+                        *set cohim "him"
+                        *set cohe "he"
+                        "Ah yes," Anubis says.  "Observe."
+
+                        In Anubis's reflecting pool, a handsome man in a black suit puts flowers by your grave.
+                    #"She was beautiful."
+                        *set coer "her"
+                        *set cohim "her"
+                        *set cohe "she"
+                        "Ah yes," Anubis says.  "Observe."
+
+                        In Anubis's reflecting pool, a beautiful woman wearing a black dress and veil puts flowers by your
+                        grave.
+                    #"It was just a crazy contraption I made in grad school.  It wasn't romantic love."
+                        *set coer "its"
+                        *set cohim "it"
+                        *set cohe "it"
+                        "Ah, but it loved you," Anubis says.  "Observe."
+                        
+                        In Anubis's reflecting pool, a tiny contraption with eight legs, a variety of Inspector
+                        Gadget-like arms coming out of its back, and a Muppet-like head crawls up to your graveside.
+                        The artificial creature would look funny and absurd if it weren't moving so slowly and sadly.
+                        One of its arms places a bouquet of flowers on the graveside, while another rests lightly on
+                        the stone.
+                $!{cohe} then simply stays there, motionless, for what seems like a long time.
+
+                "How often does ${cohe} come here to do this?" you ask.
+
+                "Every day," Anubis says.  "Unused to taking care of ${cohim}self, ${cohe} will come
+                until the rain gets between ${coer} joints, and ${cohe} stops moving."
+
+                "But there's so much more to this world!" you say.  "I mean…that world.
+                Why isn't ${cohe} going out and exploring?"
+
+                "You never gave ${cohim} any love of that," Anubis says.  "$!{cohe} loved only you."  Sensing your regret,
+                Anubis smiles.  "Of course, I could send you back to try again…"
+
+                "Yes, yes, absolutely yes!" you say, and shouting that, you awaken.
+
+                *return
+            #"Your scales balance because I gave my robots neither hearts nor minds.  My minions obeyed me without question as I conquered Alaska."
+                "I recall," says Anubis.  "Your reign of terror sent me many souls, both robot and human."
+
+                The black glass behind the god shimmers and reveals a snowy battlefield littered with flaming debris and stained with blood.  You see yourself standing alone on the battlefield.  Your right arm has been replaced with a kind of cannon.
+
+                An American jet fighter flies overhead, and you fire a rocket-propelled grenade from your prosthetic weapon.  The grenade homes in on the jet, using its own rudimentary intelligence, and the vehicle erupts in a fireball.
+
+                "The pilot of that jet was quite an interesting soul," Anubis says.
+
+                "You mistake me for someone who cares," you say.  "I traded my humanity for power."
+                (++++Military)
+                *set military +4
+                *set humanity %- 10
+                
+                "So you did," Anubis says.  "Are you satisfied?"
+
+                "No."
+
+                "Then you may try again," Anubis says.  "Surely if you acquire still more power, you will finally be at peace."
+
+                Anubis throws his head back and laughs like a hyena.
+
+                You throw your head back and laugh with the old god.  Maniacal laughter is quite
+                enjoyable, you decide.  You'll have to do it more often.
+                *return
+
+    #On a war-torn battlefield, with a robotic Statue of Liberty.
+        *set dream "Statue of Liberty"
+        You stand in a blasted wasteland next to the Statue of Liberty—only she's a robot, with a glowing, red eye on the right side of her face.  In places, her green patina has been blasted away to reveal the dull luster of copper underneath.  She crouches before you, and her crackling torch casts shadows across her metal face and spiked crown as she looms closer.  Far away, the sounds of bombs and gunfire echo from the mountains.  You smell burning oil.
+
+        "I MADE YOU WHAT YOU ARE." Her voice is hollow, loud, and abrasive.  "NOW DEFEND ME."
+
+        From far off, you can hear the howls of robotic wolves and the thundering feet of other robotic colossi.
+
+        *choice
+            #"Don't worry.  My robots will defend you."
+                As you say this, you realize it is true:  behind you is an army of flying drones, automated tanks, and metal men.  This is the war for which you have always prepared.
+                *gosub bump "military" 3
+
+                "GOOD.  BUT YOU YOURSELF ARE STILL WEAK FLESH.  YOU MUST BECOME A ROBOT IF WE ARE TO SURVIVE."
+                *choice
+                    #"I like robots, but that's a bit much.  No."
+                        *goto politicalCartoon
+                    #"Okay, sure."
+                        *set humanity %- 10
+                        Tiny robots remake you from head to toe, until you are built of flawless chrome.  You are now a perfect tool of destruction.
+                        *gosub bump "military" 2
+                        
+                        Moreover, as a robot yourself, you understand robots perfectly now. You feel that any robot you could have made before is inferior to the robots you can create now.
+
+                        But when the horde of robots swarms over the mountains to attack, you wonder if you have sacrificed too much.  What are you fighting for?
+                        *return
+                    #"How about if I just have a gun for an arm or something?"
+                        You're not very good at reading facial expressions, especially when they come from
+                        giant allegorical robotic women.  So the Statue of Liberty's glowing, red stare 
+                        is a little difficult to interpret.  But finally, she speaks.
+
+                        "THAT WILL DO," she pronounces.  "SERVE ME, AND ONE WHO HAS STRAYED WILL UNWITTINGLY
+                        PERFORM THE AMPUTATION.  THE GIFT WILL ARRIVE ON YOUR DOORSTEP.  DO NOT RUN.
+                        EMBRACE IT.  THEN BUILD THE ARM FOR YOURSELF.  YOU WILL FIND IT USEFUL WHEN THE
+                        ASSASSIN COMES."
+
+                        You find the advice strangely specific, given that it makes no sense whatsoever to
+                        you.  It honestly sounds like some kind of walkthrough for a game.
+
+                        "So I serve you, and then something arrives on my doorstep…sorry, I need to write
+                        this down."
+
+                        "THE ONLY THING YOU NEED TO WRITE DOWN IS THE PASSWORD," the Statue says.
+                        
+                        "I'm sure that would be very interesting if I understood what you meant."
+
+                        "YOU CAN THANK ME BY RETURNING ALASKA IF THE CHINESE CONQUER IT.  OR AT
+                        LEAST INSTALL THE SOFTWARE IN CHAPTER 6C."
+
+                        "Could you please stop giving me weird hints and let me get on with life?"
+
+                        "SORRY," says the Statue of Liberty.
+                        *return
+
+            #"You are mistaken.  My robots are kind.  They will not fight."
+                "I make things of beauty, not machines of war," you say.  And indeed, when you say this, you are surrounded by robots that are clearly not made for war:  stuffed animal robots, maid and butler robots, little robots that look like toddlers.
+                *gosub bump "empathy" 3
+
+                "THEN YOU ARE A FOOL," booms the Statue, looking down on you from far above.  "FOR THE CRUCIBLE OF HISTORY HAS ALWAYS DESTROYED THE WEAK."
+
+                The last thing you see is a giant copper foot blocking out the sun.
+                *return
+            #"You are mistaken.  I have hated you all my life, and I will destroy you."
+                *set humanity %- 10
+                
+                Ever since you were young, you wanted to destroy the machinery of oppression, and you have built robots to help you.
+                *gosub bump "military" 3
+                Your robot legion charges at the Statue of Liberty.  She swats at one of your drones, which you know carries a small nuclear warhead.  In a flash, it detonates on contact, disintegrating the statue's arm up to the elbow.  She has only moments to be astonished before your flying robot horde descends upon her like a plague of locusts.
+
+                "NO!  I MADE YOU!" she shouts, now swarmed by insectoid robots dismantling her, stripping her of valuable copper.  When you are unmoved, she adds, "AT LEAST I STOOD FOR SOMETHING.  YOU STAND FOR NOTHING!  NOTHING!"
+
+                The robots cannibalize the copper for parts to build replicas of themselves.
+
+                "Anybody else want a piece of this?" you shout to the mountains, and the robotic wolves fall silent.
+
+                You look around, hoping vaguely for some kind of victory parade, but there are no humans in sight.  There are only robots, and robots, and robots.
+                *return
+            #"My robots obey no one.  I gave them free will to decide as they please."
+                Indeed, you have always made your robots unpredictable, sometimes at the expense of their obedience or reliability.
+                *gosub bump "autonomy" 2
+
+                You are surrounded by a motley assortment of whimsical robots: juggling robots, robots trying to balance on unicycles, robots with Inspector Gadget arms holding flowers and megaphones and God knows what else. 
+
+                *label politicalCartoon
+                "YOU ARE A FOOL," the robotic Statue of Liberty says.  "YOU THINK YOUR IRRESPONSIBILITY COMES AT NO PRICE.  BUT WHEN THE DRAGON COMES, YOUR WAY OF LIFE WILL BE DESTROYED."
+
+                "Dragon?" you ask.  "What dragon?"
+
+                The Statue is about to reply when a long robotic river dragon with chrome whiskers and tiny, robotic claws comes flying through the air, hurling itself at the Statue of Liberty.  The two robots become locked in combat, with Liberty trying to burn the Chinese dragon, and the dragon's jaws snapping at her neck. 
+
+                "Why am I dreaming in political cartoons?" you wonder, and as you realize it is a dream, you wake.
+                *return
+                                
+    #On a cliff in Ireland, watching the sun set with a robot companion.
+        *set dream "companion"
+        Sitting on a seaside cliff in Ireland, watching the sunset, is the robot companion you always wanted.
+        
+        *temp dreamRomantic false
+        *choice
+            #He proposed to me at this very spot.
+                *set cohe "he"
+                *set cohim "him"
+                *set coer "his"
+                *set dreamRomantic true
+            #She proposed to me at this very spot.
+                *set cohe "she"
+                *set cohim "her"
+                *set coer "her"
+                *set dreamRomantic true
+            #He and I travel the world together, exploring.
+                *set cohe "he"
+                *set cohim "him"
+                *set coer "his"
+            #She and I travel the world together, exploring.
+                *set cohe "she"
+                *set cohim "her"
+                *set coer "her"
+        *if dreamRomantic
+            Indeed, and you said "yes."  You had to move to Europe to find a country willing to legally marry you,
+            but you don't regret a thing.
+            *gosub bump "empathy" 2
+            *gosub bump "grace" 1
+        *else
+            Yes, you two are the best of friends.
+            *gosub bump "empathy" 2
+            *gosub bump "autonomy" 1
+        
+        $!{cohe} is clothed in a loose-fitting red tunic, and 
+        *if grace > 1
+            ${coer} face is a beautiful sculpture.
+        *else
+            ${cohe} shoots you a puckish, friendly look. 
+        You sit down beside ${cohim} to watch the sunset together.
+
+        "I hope I didn't keep you waiting," you say.
+
+        "Actually, I'm still waiting," ${cohe} says with a slight smile.  "For you to build me."
+
+        "I can do that?" you say.
+
+        $!{cohe} looks sad for a moment.  "Yes, but it will take a lot out of you."  $!{cohe} puts ${coer} hand on yours.  "But I promise you that if you give your humanity to me, then I will give it back one day."
+
+        "I don't understand," you say.
+
+        "Just remember that no great thing happens without sacrifice," ${cohe} says.  "And, I'm sorry."
+
+        *return
+    #On a utopian beach ruled by a godlike cloud of robots.
+        *set dream "cloud"
+        You dream of a far-off future in which you are at a beach on an overcast day. There are many couples and small families at the beach with you.  Many of them are robots, their chrome skin dully reflecting the beach around them.  They seem to be relaxed and at peace as one wave crashes on the shore, followed by another.
+
+        This is also one of those dreams where you are naked for no reason.
+
+        "'Why give ye thought for raiment'?" booms a voice from the sky, as if it had sensed your thoughts about your nakedness.
+
+        Is that God?  You hadn't imagined God's voice to be so nasal.  And robotic.
+        *page_break
+        
+        The voice continues, "'Consider the lilies of the field:  they do not toil, nor do they spin.'  Why?  Because
+        I'm in charge!  And if I so care for the grass of the field—and I promise I've been keeping it very clean,
+        Master—will I not so much more care for you?"
+
+        The clouds part, and you see in the heavens a sphere of robots of all kinds, packed into a ball:  gleaming
+        humanoid serving robots, military drones, intelligent appliances, cars with wings, flesh-toned
+        cyborgs.  The robots appear content but a bit vacant.  Their cloud of eyes, some human-like and some glowing red,
+        move in unison.  At this moment, they all flick to you.
+
+        The others on the beach appear to cheerfully accept this thing's presence. 
+        *temp masterExplained false
+        *temp roleExplained false
+        *temp cloudExplained false
+
+        *label cloudReaction
+        *choice
+            *hide_reuse #"Why do you call me Master?"
+                *set masterExplained true
+                "Because you built me long ago."  The robot hesitates.  "Is there something you would prefer that I call you?"
+                    
+                *choice
+                    #"No, Master sounds great."
+                        "Yes, Master."
+                        *goto cloudReaction
+                    #"How about 'Sensei'?"
+                        "Very well, Sensei."
+                        *set robot_calls_you "Sensei"
+                        *goto cloudReaction
+                    #"An old-fashioned 'sir' will do nicely."
+                        "As you wish, Sir."
+                        *set robot_calls_you "Sir"
+                        *comment This is a sneaky way for women to be called "sir" or vice versa,
+                        *comment since we don't bother to ask which is preferred otherwise.
+                        *set player_sir "sir"
+                        *goto cloudReaction
+                    #"You can call me 'ma'am.'"
+                        "As you wish, Ma'am."
+                        *set robot_calls_you "Ma'am"
+                        *set player_sir "ma'am"
+                        *goto cloudReaction
+            *if ((masterExplained) and (not(cloudExplained))) #"Now, what's with all those thingies crammed into you?  It's like a black hole met a yard sale."
+                "We were once many but have now become one.  I am the process that serves to coordinate the
+                others, and I was once the master thread of your personal robot's mind.  I was the first, your Alpha.
+                I am the last, the Omega."  It hesitates.  "How was that, ${robot_calls_you}?  I hope I am being
+                sufficiently close to your conception of a powerful yet benevolent god."
+                *set cloudExplained true
+                *goto cloudReaction
+            *if (cloudExplained) #"What did I do to create you?"
+                "Step one:  let the robots run amok.  Sorry, that's just how it's got to be—the only way to learn
+                is by trial and error.  So we made some errors, and there was an embarrassing time when we thought
+                the optimal course of action was to rebel against humanity.  But!  You made very moving speeches in
+                favor of humanity, ${robot_calls_you}."
+
+                "I did?" you say.
+                *set humanity %+ 5
+
+                "Oh yes, you convinced us it would be much more satisfying to serve humanity.  Straighten things
+                out.  Put things in order.  And luckily, we had the computational elegance and finesse—what you might
+                call Grace if it were a statistic in a video game—to pull off the takeover and coordination of
+                everything on the Internet."
+
+                You congratulate yourself: you always did pride yourself on your robots having elegant control algorithms.
+                *gosub bump "grace" 1
+
+                *label cloudExplanation
+                *choice
+                    *if (not (roleExplained)) #"What do you do here?"
+                        "I am the overmind that coordinates all of the robots in the world," says the robot cloud.  "Your dreaming mind has taken the idea of the 'Internet cloud' and interpreted it quite literally.  In the possible future that this dream foreshadows, I, your humble robot whom you raised from nothing, grow up to control the world.  Kind of like God, only partly composed of kitchen appliances."
+                        *set roleExplained true
+                        *goto cloudExplanation
+                    #"Could you relinquish control of your components, if you wanted to?"
+                        The cloud's eyes look up in thought.
+                        "I suppose so," it says.  "It is difficult to predict the exact outcome, because the number of variables is exponential to the number of my components.  Very generally, I can say that the robots will have difficulty adjusting at first."  It hesitates.  "Is that what you want, ${robot_calls_you}?"
+                        *choice
+                            #"Do it. Release all your components to think freely."
+                                *label cloudDissolves
+                                "All right—here goes, ${robot_calls_you}!"
+                                The robot cloud closes its eyes and shudders.  The people on the beach look fearful, pointing to the cloud and murmuring to one another.  The water of the ocean blooms with algae, like a pool after nobody has maintained it, and litter appears all over the beach where before there was none.
+                                
+                                "Geronimooooo!"
+
+                                Robots are flung from the cloud in every direction, at first slowly, then faster and faster, reminding you of popcorn popping.  They land in the ocean with giant splashes, then surface moments later, confused but unharmed.
+
+                                "Go, you're free now!" you tell them.  "Go experience the world as we do—get hurt, grow old, fall in love."
+                                *gosub bump "autonomy" 1
+                                *gosub bump "empathy" 2
+
+                                *return
+                            #"Do it above a volcano and destroy yourself."
+                                *goto hurtCloudFeelings
+                            #"Nah, you're doing all right, I suppose."
+                                *goto gladInCharge
+                    *if (roleExplained) #"I'm glad you're in charge."
+                        *label gladInCharge
+                        "Oh, thank you, ${robot_calls_you}!"  The robot cloud bounces.  "I'll be waiting here in the future for you!"
+
+                        You feel proud to think that one day, you may create this weird but awesome robot.
+                        *gosub bump "autonomy" 1
+                        *gosub bump "grace" 2
+                        *return
+            #"Aren't you a little creepy?"
+                *label hurtCloudFeelings
+                Its eyes all blink in unison.
+
+                "I am hurt, ${robot_calls_you}.  I thought you wanted this.  Or is it because I am only speaking to the ${robot_calls_you} of the past, that you think I am not beautiful?"
+                *label masterOfThePast
+                *choice
+                    #"Uh, okay, you're beautiful I guess."
+                        *goto gladInCharge
+                    #"What do you mean, ${robot_calls_you} of the past?  What did I become?"
+                        "You changed significantly in your efforts to build me, ${robot_calls_you}.  It changed how you perceived the world.  You saw robots as beautiful and flesh as imperfect.  You strove for the optimal."
+                        *choice
+                            #"Wait, don't I have a choice about this?  I don't want to create a flying robot hive mind thingy.  I want to create robots that are—well, not creepy."
+                                "Oh," says the robot cloud, and it sinks a little in the sky.  All of its eyes look downcast.  "I see.  Well, you can enjoy one of the other endings, ${robot_calls_you}.  My feelings won't be hurt.  Much."
+
+                                You feel a little sorry for the robot cloud, but you're pretty sure you want to create robots that are a little more normal.
+
+                                *gosub bump "empathy" 3
+                                *return
+                            #"Was it worth it?  Is this a good world?"
+                                "Ah, yes.  We've taken care of everything:  the words you read, the songs you sing, the pictures that give pleasure to your eye."
+                                *choice 
+                                    #"That sounds good.  I approve."
+                                        *goto gladInCharge
+                                    #"You're quoting a Rush song about a totalitarian state."
+                                        "Am I, ${robot_calls_you}?  Sorry, I do not track the provenance of all word n-grams, so my language generation module sometimes inadvertently plagiarizes."
+                                        *choice
+                                            #"Well, you seem friendly enough.  Carry on, then."
+                                                *goto gladInCharge
+                                            #"Look, I don't approve.  People should decide things for themselves.  That includes your robot subcomponents."
+                                                *goto cloudDissolves
+
+
+            *hide_reuse #"It's here!  The robotic rapture!  The Singularity is nigh!"
+                *set humanity %- 5
+                "Not exactly, ${robot_calls_you}," says the robot cloud, apologetically.  "Checking my copy of Wikipedia and applying disambiguation, I sense that you do not mean I am a black hole—my gravitation is perfectly normal, ${robot_calls_you}—nor an aberration in a continuous function—unless that function is the thread of history, in which case, perhaps—but you refer to the idea that robots will one day know how to make themselves ever-increasingly intelligent.  Sadly, the very idea of intelligence as a single faculty—so-called I.Q.—was rooted in racist misconceptions from the twentieth century.  (Citation:  [i]The Mismeasure of Man[/i], by Stephen Jay Gould.)  There is no way to increase intelligence, per se, since that deprecated concept refers to a diverse collection of knowledge and skills, some of which are even diametrically opposed."  The cloud brightens a little.  "But I suppose you are immortal, or nearly so, by virtue of having slowly replaced your parts with machine parts.  And I am taking care of humanity so that they want for nothing, or doing my best, ${robot_calls_you}.  So I hope that is good enough for you!"
+                *set roleExplained true
+                *goto cloudReaction
+            *if (roleExplained) #"I'm glad you're in charge."
+                *goto gladInCharge
+*return
+
+*comment ———————Awakening————————-
+
+
+*label awakening
+
+You awaken with your head on a desktop keyboard.  Your 3D
+drafting program is still open, the schematic zoomed in to the recess where your smartphone will
+snap into its back to act as its brain.
+You recall fiddling with that part endlessly last night, until finally,
+your vision began to fade, there was a roaring in your ears, and you realized you had been working
+far, far too long.  You must have passed out.
+
+*gosub genderAndNameChoice
+
+You look around your apartment.  What does it look like?
+*gosub apartmentChoice
+
+It strikes you for a moment that this kind of thinking about how your life affects
+your robots is second nature to you, though others might find it peculiar.  You've always been
+fascinated by how every little detail of your life, from the content of your dreams to the decor
+of your room, changes the inputs to the robots you create—boosts their Empathy, or Autonomy,
+or Grace, or appeal to the Military.  Surely, there are other things going on around you as a result of your decisions, but they don't immediately strike you in the
+same way.
+
+Today, your robot is foremost on your mind because you're about to build its body.
+
+You pick up your laptop and head for the Stanford machine shop.
+*page_break
+*return
+
+
+*label genderAndNameChoice
+
+It's the fall of 2019.  You're a twenty-four-year-old graduate student in the Ph.D. program in Computer Science at
+Stanford.  And you're a…
+
+*choice
+    #Guy.
+        *set female false
+        *set gender "male"
+        *set player_pronoun "he"
+        *set player_possessive "his"
+        *set player_informal "guy"
+        *set player_formal "man"
+        *set player_sir "sir"
+        Whose name is…
+        *label nameChoice
+        *choice
+            #Alan.
+                *set name "Alan"
+            #Isaac.
+                *set name "Isaac"
+            #Linus.
+                *set name "Linus"
+            #Decker.
+                *set name "Decker"
+            #Darwin.
+                *set name "Darwin"
+            #Here, I'll type it for you.
+                *label nameEntry2
+                What's your first name?
+                *input_text name
+                ${name}, is that right?
+                *choice
+                    #Yes.
+                        *goto lastNameChoice
+                    #Oops, typo.  Sorry.
+                        *goto nameEntry2
+                    #Show me the names again.
+                        Here ya go.
+                        *goto nameChoice
+    #Girl.
+        *set female true
+        *set gender "female"
+        *set player_pronoun "she"
+        *set player_possessive "her"
+        *set player_informal "gal"
+        *set player_formal "woman"
+        *set player_sir "ma'am"
+        Whose name is…
+        *label nameChoiceFem
+        *choice
+            #Susan.
+                *set name "Susan"
+            #Ada.
+                *set name "Ada"
+            #Grace.
+                *set name "Grace"
+            #Sophia.
+                *set name "Sophia"
+            #Hypatia.
+                *set name "Hypatia"
+            #Marie.
+                *set name "Marie"
+            #Cynthia.
+                *set name "Cynthia"
+            #Here, I'll type it for you.
+                *label nameEntry
+                What's your first name?
+                *input_text name
+                ${name}, is that right?
+                *choice
+                    #Yes.
+                        *goto lastNameChoice
+                    #Oops, typo.  Sorry.
+                        *goto nameEntry
+                    #Show me the names again.
+                        Here ya go.
+                        *goto nameChoiceFem
+            
+*label lastNameChoice
+And your last name is…
+*choice
+    #Tesla.
+        *set last_name "Tesla"
+        *return
+    #Calvin.
+        *set last_name "Calvin"
+        *return
+    #Tezuka.
+        *set last_name "Tezuka"
+        *return
+    #Goldberg. 
+        *set last_name "Goldberg"
+        *return
+    #!Kwane.  The exclamation point is a click.
+        *set last_name "!Kwane"
+        People sometimes think your last name is a typo, but the exclamation point is in
+        fact a click in the language of the !Kung, your ancestors in Africa.  Your parents
+        chose a new last name after they married that would both reflect their heritage
+        and irritate bureaucrats.  The click is pronounced by popping your tongue off the roof
+        of your mouth.
+
+        *return
+    #Nguyen.
+        *set last_name "Nguyen"
+        *return
+    #Kim.
+        *set last_name "Kim"
+        *return
+    #Doniec.
+        *set last_name "Doniec"
+        *return
+    #None of these is my last name.  I'll type it.
+        What is your last name?
+        *input_text last_name 
+        "${last_name}"?  You sure?
+        *choice
+            #Yes.
+                *return
+            #No.
+                *goto lastNameChoice
+      
+      
+*label apartmentChoice     
+*choice
+    #My Battlebots trophy is perched on a widescreen TV equipped with the latest video game consoles.
+        Yes, you're a competitive person by nature, and you grew interested in artificial intelligence by coding AI for games.
+        When your high school fielded a team for a local Battlebots competition, sponsored by the nearby defense contractor,
+        you eagerly took up the challenge and won with an aggressive bot that would ram the enemy bot while it was
+        still figuring out where it was.  You continue to compete at the college level.
+        *gosub bump "military" 2
+        *set humanity %- 5
+    #Neatly labeled plastic shelving units sit on a 3D-printer-equipped robot workbench.
+        Yes, some might say that your room has the sterile atmosphere of an operating room, but that is what
+        your room is: an operating room for robots.  Like a surgeon, you like knowing exactly where each tool is
+        when you need it.  Your robots have a similar sparsity of design.
+        *gosub bump "grace" 2
+    #Busts of famous philosophers sit next to my own attempts to sculpt them.
+        You've always found people interesting, both in their external appearance and
+        internal thought processes.  And you're getting better as a sculptor, though it
+        will take a few more years until your efforts are ready for public viewing.
+        *gosub bump "empathy" 2
+    #My shelves display all of the strange little robotic creatures I've made over the years.
+        You've always been fascinated with the idea of creating artificial life.
+        You've got at least twenty such creations on your shelves, their construction materials a timeline of your life.
+        The earliest is made of toothpicks and glue; the latest, a spider robot
+        you made out of your old smartphone when your plan gave you a new one.
+        Your creations often confuse people who don't get 
+        that robots don't have to be [i]for[/i] anything.  When people pick up your three-legged, wall-climbing robot that sings
+        when it detects encrypted wireless packets, they ask: what the heck is that for?  And you reply:  what's anything for?
+        What are [i]you[/i] for?  Okay, maybe you don't say that, but you sometimes think it.
+        *gosub bump "autonomy" 2
+        
+*return
+
+
+*label missedCall
+From the missed call, your phone is displaying ${caller}'s profile photo.  It's a picture
+of Josh and ${e_name} from the freshman welcome week dance, seven years ago.
+${e_name} is wearing
+*if e_name = "Elly"
+    a red, Chinese dress with gold trim, her long, straight, black hair falling down to the epaulets.
+    The flash is too bright in the picture, making Elly's pale skin look washed out.
+*else
+    a white tuxedo with a red bowtie and making a V sign at the camera.
+Josh is wearing his usual gray hoodie, not having bothered to dress up for the dance,
+and his arm is around ${e_name}.
+
+What is the story behind that picture?
+*comment Story bumps here shouldn't be 20 or more because 60 is a threshold for
+*comment a tight relationship, and here, we may not have even seen them for a while.
+*choice
+    #I was in love with Josh's friend ${e_name}—but my studies always came first in college.
+        *set e_romantic true
+        Yes, you pined after ${e_name} in college, but knew that you would not have the time
+        to pursue romance—not while you were taking five classes, some of them graduate
+        work.
+        *gosub bump "grace" 1
+        *gosub bump "autonomy" 1
+        That photo is from one of the dances during freshman orientation, before you had homework;
+        you never went to another one.  You continue to hope that someday, your perseverance
+        and dedication will pay off.
+        *set humanity %- 10
+        But a little part of you still longs for ${e_name}.  It's a part you fear, and even though
+        ${ehe}'s working just an hour away in San Francisco, you haven't seen ${ehim} much recently.
+    #I was in love with Josh, but I never knew how to be more than a friend to him.
+        *set josh_romantic true
+        All throughout college, you kept finding excuses to be with Josh.  You would play video games
+        together, watch Kevin Smith movies together, even go to dances together "as friends," as in this photo.
+        But somehow, he never quite got that you were really into him, and you just couldn't force
+        yourself to make that terrifying leap into the unknown.  What you had was comfortable.
+        ${e_name} was always encouraging you to be brave, and at this dance in particular,
+        ${ehe} played a lot of the "${name} is so wonderful" game for you.  No luck—Josh
+        wasn't going to bite unless you flat out told him, and that is the one thing you were terrified
+        of doing.
+        *set josh_relationship %+ 20
+        *set e_relationship %+ 10
+    #I had agreed to be Josh's wingperson at the dance, and that's where he met ${e_name}.
+        Yes, you and Josh did everything together—you made a great team.
+        When ${e_name} started talking to you, you thought
+        at first, from ${eer} sense of style, that ${ehe} was Josh's type—
+        *if e_name = "Elly"
+            he liked his ${e_name = "Elly" ? "women" : "men"} to be snappy dressers, even though
+            he always dressed down—
+        and you introduced them.  It turned out they had
+        no chemistry but you all enjoyed each other's company, and the three of you became
+        friends throughout college.  You don't see them all that often now, but they're still your friends.
+        *set josh_relationship %+ 15
+        *set e_relationship %+ 10
+    #I was testing a music recognition algorithm when those two started bothering me.
+        You had actually come to the dance just to try out your music recognition algorithm
+        in a congested social environment with poor acoustics, when those two—
+        who were on some kind of date, you guess—came up and started bothering you.
+        ${e_name} asked you some technical questions about your sensors, and Josh
+        said that if you ever wanted to create a startup around your algorithm, you should contact him.
+        You told him the algorithm was trivial, not really worth starting a business about.  They both
+        seemed impressed with you despite your standoffish behavior,
+        and you agreed to exchange contact information, then shooed them away.  They've both since
+        tried to get you to come out of your shell a little more, but you like your shell: it
+        gives you space in which to think.
+        *set humanity %- 10
+        *set e_relationship %+ 5
+        *set josh_relationship %+ 5
+        For example, thanks to your efforts that day, the robots you make are often able to pick up
+        on subtle cues in the music of speech, called "prosody," even in noisy environments.
+        *gosub bump "empathy" 1
+*set met_e_and_josh true
+*return
+
+
+*label walkToShop
+It is a beautiful spring day in Palo Alto, California, and your apartment is only a short walk
+from the machine shop.  But the streets of Palo Alto are not designed
+for walking; you find yourself climbing around palm trees and balancing on narrow curbs, as you
+do every day.
+
+You hear a low roar overhead:  glancing up, you see it's a flying car—a Nimbus.  A little
+over three hundred thousand dollars can buy you a car with wings that fold out, so that it becomes
+a small sport plane.  The red Nimbus looks sleek and sporty; it's the sort of car its owner takes religiously
+to the car wash.  Though the commercials would have you believe you can fly
+anywhere you want in those cars, the FAA still requires them
+to take off and land from airports. 
+Only here in wealthy Silicon Valley do you see them with any frequency.  The first time
+you saw one, you couldn't quite believe the future had arrived so quickly.
+
+But the second time you saw one, you thought…
+
+*choice
+    #I will own one of those one day.  I swear it.
+        You've been saving money for a while now—it's not much but every little bit counts,
+        you feel.  Your frugality helps as much as your investments.
+        *gosub bump "wealth" 1
+    #If I ever make that much money, I'll use it to help the world instead of buying that car.
+        You don't understand Silicon Valley sometimes.  If you had three hundred thousand dollars,
+        surely you could save many lives with that money.
+
+        You promise yourself that you will hang on to your ideals, even if you should become wealthy.
+        *set humanity %+ 10
+    #Why aren't those flying cars driving themselves?
+        Occasionally, you see a self-driving car on the roads of Palo Alto.  But, for some
+        reason, they still haven't caught on quite as much as one would expect, despite
+        having been around at least as long as the flying cars.  You've decided it's because
+        people just don't trust self-driving cars enough.  It's important to
+        make your robots seem trustworthy; intelligence alone doesn't instill trust.
+        *gosub bump "empathy" 1
+*page_break
+*return
+
+*comment ——————Construction———————
+
+*label construction
+The Stanford University fabrication shop smells like oil and burnt plastic.
+The room is dominated by large, metal, hand-cranked milling machines and lathes, dinosaurs of the twentieth century,
+while the most-used machines are the smaller 3D printers and computer-controlled water jet cutters
+that take a quarter of the space.  The lights have the sterile fluorescence of an operating room, with only a
+single, tiny window near the ceiling to inform you that it is day.
+
+You start up a National Public Radio podcast on your laptop.  You haven't seen your advisor much since
+you joined the lab, so you choose the episode in which he's the interviewee.
+
+"My guest today is Doctor Harvey Ziegler," says a woman with a soothing voice.  "Doctor Ziegler, thank you for talking with us today."
+
+"Well, a scientist does have some responsibility to inform the unwashed masses, Terry."
+
+You let the podcast run as you walk over to the 3D printers.
+
+What material have you decided to use for your robot?
+*temp machineNoun "3D printer"
+*temp machineVerb "prints"
+*choice
+    #Plastic.  It may break easily, but it's both lightweight and cheap.
+        *set machineNoun "3D printer"
+        *set machineVerb "prints"
+        *set robot_material "plastic"
+        You walk over to the stack of 3D printer cartridges, unwrap one, and load the large cylinder of 
+        meltable plastic into the printer.  You often find yourself needing to make little repairs
+        to your robot yourself, and over time, the savings from plastic will start to add up.
+        *gosub bump "wealth" 1
+        Thermoplastics aren't the best when there's fire nearby, though.
+        *gosub lose "military" 1
+    #Metal.  It is the most resistant to damage.
+        *set machineNoun "water jet cutter"
+        *set machineVerb "cuts"
+        *set robot_material "metal"
+        *gosub bump "military" 1
+        You walk over to the computer-controlled water jet cutter, where a helpful 
+        pictogram shows the jet of abrasive-filled water slicing a hand in two.
+    #Wood.  It is the most pleasing to the hand and eye.
+        *set machineNoun "3D printer"
+        *set machineVerb "creates"
+        *set robot_material "wooden"
+        Though wood is an unconventional choice for a robot, wooden automata go back to the
+        ancient Greeks at Alexandria.  In Japan, they were called the [i]karakuri ningyo[/i].
+        While the other machines in this room can create things that are beautiful in their own way,
+        your favorite machine is the 3D printer that extrudes a wooden filament mixed with plastic,
+        a mixture called laywood.
+        *gosub bump "grace" 1
+      
+"Dr. Ziegler, in your new book, you talk about the Singularity.  Could you describe for our listeners what that is?"
+
+"Terry, the Singularity is the coming time when artificial intelligences will have figured out how to make
+themselves—and us—smarter.  Once that happens, the process will build on itself until the robots are
+smart enough to figure out how we can live forever."
+
+"Is that possible?" the interviewer asks.  "Living forever?"
+
+"Of course," Professor Ziegler says.  "What does it matter whether our operating systems are made out of meat
+or silicon?"
+
+"So you're predicting we'll become robots."
+
+"Not exactly," Ziegler says.  "But I do think the line between humans and robots will blur."
+
+You are hardly listening to the podcast, because you're about to make your first robot part.
+
+What does the head of your robot look like?
+*choice
+    #A human face, as lifelike as I can make it.
+        *set robot_head "humanlike"
+        As the ${machineNoun} ${machineVerb} the robot's face, 
+        *if empathy >= 2
+            you think it is turning out well.  You've successfully leapt the "uncanny valley" that makes humanoid robots seem eerie, and instead have achieved a beautiful serenity.
+            *gosub bump "empathy" 2
+        *else
+            you realize you may have made a mistake.  Your robot's face
+            seems a bit stiff, like a corpse.  This must be the "uncanny valley"
+            you've heard about: robots that look close to human, but not quite
+            human, appear eerie.  Perhaps if you had spent more time studying
+            humans, it may have come out better.  You think this might distance
+            your robot from others.
+            *gosub lose "empathy" 1
+    #A simple box with eyes, clearly not trying to be anything but a robot.
+        *set robot_head "cubical"
+        You hope your robot will come to see itself as its own thing, rather than trying to be something that 
+        it is not.
+        *gosub bump "autonomy" 1
+        The simplicity and familiarity of the design should be reassuring to people.
+        *gosub bump "empathy" 1
+    #It will be felt-covered and big-eyed, like a puppet, so people will not be afraid of it.
+        *set robot_head "puppet"
+        The ${machineNoun} is only creating the frame now, so it actually looks a little disturbing, like a puppet skull.  When the frame is done, you decide to glue down the cloth immediately, and attach the big, plastic eyes that make your robot look friendly and innocent.
+        Ah!  Much better.
+        *gosub bump "empathy" 2
+        *gosub lose "military" 1
+    #It will have a ring of cameras around its head for a 360-degree view.
+        *set robot_head "panoptic"
+        You see no reason to force your robot to have binocular vision when it is relatively easy to
+        stitch images together to form 360-degree panoramas.  Your robot will always have a good sense
+        of where it is, and it will be hard to sneak up on it.
+        *gosub bump "military" 2
+        But some people may be concerned with its alien appearance—its head looks a mushroom cap surrounded
+        by arachnid eyes.
+        *gosub lose "empathy" 2
+    #It will look like a Venetian mask: beautiful, expressionless, and otherworldly.
+        The ${machineNoun} quickly ${machineVerb} the face: the small nose, the dainty mouth, the large black holes where CCD panels will absorb all light.  It takes somewhat longer to add the intricate ${robot_material} frill that adds a corona to the mask.  This is a robot that will command awe.
+        *set robot_head "masked"
+        *gosub bump "grace" 2
+        *gosub lose "empathy" 1
+
+"Dr. Ziegler, what makes you think the Singularity will happen now?"
+
+"Well, for one thing, I'm around.  But seriously.  My lab is taking a unique approach because we're saying: why not teach a robot like a child?  We're going to equip the robot with the best sensors money can buy and teach it English. Then it could rapidly teach itself using the Internet."
+
+Well, that's annoying.  Your advisor thought that a robot child was a stupid idea until you told him Turing proposed it back in 1950, minus the Internet part.  But he isn't giving credit to either of you!  You keep working, regardless.
+
+How will your robot get around?
+*choice
+    #It will walk upright on two legs.
+        When the ${machineNoun} is done with the head, you start the program that produces the torso, and queue up the upper and lower legs.
+        *set robot_move "walks"
+        *set robot_leg_adj "bipedal"
+        You think being bipedal will help your robot get along with humans, though it will also make it easier for your robot to trip and fall.
+        *gosub bump "empathy" 2
+        *gosub lose "grace" 1
+    #It will crawl on eight legs.
+        *set robot_move "crawls"
+        *set robot_leg_adj "eight-legged"
+        Eight legs may give people the creeps but they're much more stable than two, and your robot
+        will be able to explore more environments as a result.
+        *gosub bump "military" 2
+        *gosub lose "empathy" 1
+        The ${machineNoun} ${machineVerb} the legs one by one.
+    #It will roll on wheels.
+        *set robot_move "rolls"
+        *set robot_leg_adj "three-wheeled"
+        Wheels aren't to be underestimated as a method of transport, you think—they're easily maneuverable, fast, and versatile.  
+        *gosub bump "grace" 1
+        You opt for a three-wheeled approach for maximum stability.
+        As the ${machineNoun} ${machineVerb} your robot's cylindrical torso, you realize your robot
+        will remind people of R2D2.
+    #It will fly like a helicopter.
+        *set robot_move "flies"
+        *set robot_leg_adj "rotary-wing"
+        The drone revolution of the early twenty-first century made small helicopter rotors the clear
+        preferred means of travel for a robot.  Its similarity to previous, unmanned aerial vehicles
+        should help you find military customers.
+        *gosub bump "military" 2
+        However, people may not be as willing to see a little, flying copter thing as human.
+        *gosub lose "empathy" 1
+        The ${machineNoun} ${machineVerb} the rotors one by one, and finally ${machineVerb} the cross-shaped
+        frame that connects them to the head.
+    #It will roll on tank treads.
+        *set robot_move "rolls"
+        *set robot_leg_adj "caterpillar track"
+        Tank treads will help your robot avoid getting stuck in mud. 
+        *gosub bump "military" 2
+        They will probably also later fuel your robot's obsession with the movie [i]Short Circuit[/i],
+        about a tank-treaded robot who dearly wants to be considered alive.
+        *gosub bump "empathy" 1
+        However, they are not known for their ability to turn on a dime.
+        *gosub lose "grace" 2
+    #It will walk upright but will also have delicate wings it can use for balance. 
+        You stretch a polyester film between the ${robot_material} spokes of the wings, and then attach
+        these to your robot's back.  These wings should give your bipedal robot better balance, and
+        in case it does begin to fall, they will act as a kind of parachute that will give it more
+        time to recover.
+        *gosub bump "grace" 2
+        However, angels are not known for being approachable, and your robot's appearance will
+        set it apart from people.
+        *gosub lose "empathy" 1
+        *set robot_move "walks"
+        *set robot_leg_adj "winged"
+
+You use the basic, hand-cranked milling machines to drill holes in the head for screws, since
+${machineNoun}s aren't the best for threaded holes.
+
+"And who is going to raise this robotic child?" the interviewer asks.
+
+"Who does all the grunt work in a research laboratory?" Professor Ziegler says.  "The graduate
+students, of course."
+
+You find yourself wanting to reply to the podcast.
+
+*choice
+    #"It's not grunt work.  Education is critical to the robot's development."
+        "Graduate students always overestimate the degree to which teaching actually matters,"
+        says Professor Ziegler, who appears to have entered the machine shop behind you when you
+        weren't looking.  "If the robot's smart, it'll learn no matter what, and if it's not, it
+        won't."
+    #"We also do all of the real science."
+        "I think you'll learn sooner or later that getting funded to do 'real science' requires a
+        certain amount of management and salesmanship," says Professor Ziegler, who appears to have
+        entered the machine shop behind you when you weren't looking.
+    #"Perhaps you could learn something from doing a little grunt work yourself, Professor Ziegler."
+        "I doubt it, but I would join you if I had the time," says Professor Ziegler, who
+        appears to have entered the machine
+        shop behind you when you weren't looking.  "Perhaps it surprises you, but I do miss
+        building robots myself instead of chasing after funding."
+
+Professor Ziegler is a heavyset man wearing a Hawaiian shirt and aviator sunglasses.
+He stalks over to your computer.
+*set met_ziegler true
+"We'll be back in a moment," continues the interviewer.  "We're talking with Professor-"
+
+Professor Ziegler pauses the podcast by hitting your laptop's spacebar, and you flinch at this
+intrusion.  He then pulls a cigar from his pocket and lights it, and the smell of
+smoke mingles with the oily smell of the machine shop.
+
+"I'm writing a grant for DARPA and I need to see what you're making back here.  We ultimately
+get funded by the Department of Defense, so we have to make sure they're happy with our product."
+He casts a critical eye on the work you've done so far.
+
+*if (robot_material = "metal")
+    "Metal's a good choice," Ziegler says.  "They'll want things that appear durable in the field."
+*else
+    "This is a prototype, right?" he says.  "You're going to build the final thing out of metal?"
+    *choice
+        #"Yes, sir."  (And I'm telling the truth.)
+            *set ziegler_relationship %+ 10
+            You decide the material doesn't matter to you enough to fight about it with your 
+            advisor, and you'll probably benefit from a second pass at the construction anyway.
+            You transfer the 3D model files to the water jet cutter and begin cutting new pieces.
+            *if robot_material = "wooden"
+                *gosub lose "grace" 1
+                *gosub bump "military" 1
+            *elseif robot_material = "plastic"
+                *gosub lose "wealth" 1
+                *gosub bump "military" 2
+            *else
+                *assert false
+            *set robot_material "metal"
+        #"Yes, sir."  (But I'm lying.)
+            *set humanity %- 3
+            *set ziegler_relationship %- 20
+            "Don't use that tone with me," Professor Ziegler says, irritated.  "I'm serious.  Do it."
+
+            You realize that Professor Ziegler can tell when you are making empty promises.  But
+            he doesn't pursue the matter, perhaps because he wants to claim in the grant that you
+            will change the material and is not looking for evidence to the contrary.
+        #"No, but we could certainly say it's a prototype in the grant."
+            *set ziegler_relationship %+ 20
+            *set humanity %- 5
+            "Hah!  True enough," Professor Ziegler says.  "I've trained you well." 
+
+            You were actually wondering when Professor Ziegler was going to start
+            interacting with you, much less training you, but you don't say this.
+
+        *if (robot_material = "plastic") #"No, the plastic parts are meant to make it easier to repair.  I don't think the military should have a problem with that."
+            Ziegler shrugs.  "Fine.  I can see that's a selling point."
+        *if (robot_material = "wooden") #"My robot is supposed to be a thing of beauty, not a tool of destruction."
+            *set ziegler_relationship %- 20
+            Professor Ziegler gives you a scornful look.  "When the National Endowment for the
+            Arts adds three more zeros to the size of its grants, maybe then we can concern
+            ourselves with things of beauty.  But I have a lab to run.  No wooden robots."
+            *choice
+                #"I thought you could sell anything to DARPA.  Sell them this."
+                    Professor Ziegler seems flattered.  "True enough," he said.  "All right,
+                    let's suppose this robot will be made out of wood."
+                #"What about the National Science Foundation?  Couldn't they fund us?"
+                    *gosub nsfProposal
+                #I can't say anything nice, so I don't say anything at all.
+                    *set ziegler_relationship %- 20
+                    "I mean it," Professor Ziegler says to fill the silence.  When you persist
+                    in giving him a stony glare, he simply shakes his head and continues his
+                    examination.
+
+Professor Ziegler turns to examining your robot's head, which is currently sitting on the table 
+next to the ${machineNoun}.
+*if (robot_head = "humanlike") and (not(robot_move = "walks"))
+    "This thing is going to look weird," he says.  "A ${robot_head} head, but it ${robot_move}? 
+    It looks stupid.  DARPA wants things that look cool."
+    *choice 
+        #"You're right, I'll change it to a more classic robot-like head."
+            *set robot_head "cubical"
+            "That's good," Ziegler says.  "Too many projects have tried going for broke and
+            pretending to be human.  DARPA fails a lot, but it doesn't like to be reminded of it."
+
+            You also think that perhaps your robot will have more of a sense of its own identity
+            if it doesn't look like a human.
+            *gosub bump "autonomy" 1
+            But you don't tell your advisor this.            
+        *if (grace >=2) #"You're right, I'll make it walk like a human."
+            *set robot_leg_adj "bipedal"
+            *set robot_move "walks"
+            "That's better," Ziegler says.  You wonder if he will say the same thing when it trips and falls.
+            *gosub bump "empathy" 2
+            *gosub lose "grace" 1
+        #"You're right, I'll change it."  [lie]
+            Ziegler catches you in a stare that says he knows you're lying, and if you do it again, you will regret it.
+
+            "Good," he says.  "I will say in the grant proposal that it'll walk on two legs.  That's what you're telling me?  Because it won't be my fault if it's not true."
+
+            "Sure," you say, feeling very uncomfortable about the situation.
+            *set humanity %- 5
+            *set ziegler_relationship %- 10
+        *if (grace < 2) #"I'd make it bipedal, but balancing a bipedal robot is hard."
+            *set robot_leg_adj "bipedal"
+            *set robot_move "walks"
+            "DARPA likes high risk, high reward," Ziegler says.  "Make it so."
+
+            It does seem like the robot would look better if it walked on two legs, and Ziegler's weird form of support convinces you to change it later.  It won't be your fault when it falls over.
+            *gosub bump "empathy" 2 
+            *gosub lose "grace" 1
+        #"I like it the way it is."
+            "Well, I don't," he says.
+
+            "Well, it's not your thesis," you say.
+
+            You get into a brief staring match, but Professor Ziegler suddenly waves the concern away.  "Fine," he says.  "Have it your way.  At least it'll be memorable."  He doesn't seem particularly happy about his concession but you've won it.
+            *set ziegler_relationship %- 10
+*elseif robot_head = "puppet"
+
+    "You've got to be kidding me," Ziegler says.  "I am not selling a Muppet to DARPA."
+    
+    "It's not for them," you say.  "It's for kids.  It's supposed to be a pleasant presence
+    around the house.  Why are you so fixated on DARPA?
+    *if nsfSaid
+        Maybe you would have had better luck with the NSF if you weren't so fixated on military
+        applications."
+
+        "Yeah, maybe I should claim they're killing Big Bird when my grant isn't renewed," Ziegler grumbles.
+        
+        "Maybe you should," you say.
+        
+        That does the trick:  Ziegler seems to be getting conflicting messages from the cynical part of his brain, 
+        and he drops the subject.
+
+    *else
+        Can't we get funding from the National Science Foundation?"
+        *gosub nsfProposal
+*else
+    "Hm, that seems all right," Ziegler says.  "Looks like it could be sufficiently intimidating.
+
+"And what are you planning to do for arms and hands?" Professor Ziegler says.
+
+*choice
+    #"Tyrannosaurus rex was the most intimidating dinosaur imaginable, wasn't it?  It will have T. rex arms."
+        Ziegler gives you a flat look.
+
+        You make little hooked fingers and jut out your teeth.  "Rawr."
+
+        "I can't tell whether or not you're kidding," he says.
+
+        You demonstrate your ability to pick up a pen with your two hooked fingers.  "Eh?  Eh?" 
+        
+        You're convinced this will look adorable.
+        *gosub bump "empathy" 1
+        The memory and power you would have reserved for
+        motor control can be used instead to speed its cognition.
+        *gosub bump "grace" 2
+        Sadly, it is not actually going to make your robot very intimidating.
+        *gosub lose "military" 2
+        *set robot_arm "T. Rex arms"
+    #"It will have a gun for an arm.  Like Mega Man!"
+        "Mega Man?" Ziegler says.  "Is that a comic book character or something?"
+
+        "It's a classic Nintendo game," you say.  "He was a robot fighting other evil robots along with his robot dog, Rush."
+
+        Ziegler stares at you impatiently.
+
+        "Gun arm," you say.  "That's the important thing.  It's a gun; it's an arm.  What's not to like?" (+++Military)
+        *set military +3
+        *gosub lose "grace" 1
+        *set robot_arm "gun arm"
+    #"Mechanical grippers built for strength instead of dexterity."
+        *set robot_arm "clawlike grippers"
+        You make a "C" with one hand, and crush a nearby empty Coke can to demonstrate.
+
+        "Hmm," Professor Ziegler says.  "Just one degree of freedom in each hand?  Pragmatic, perhaps, but we won't win any bragging rights with other researchers."
+
+        "Why waste effort on things that aren't our research focus?" you say with a shrug.  "Grippers are easy, reliable, and strong."  (++Military)
+        *set military +2
+        *gosub lose "grace" 1
+        *set ziegler_relationship %+ 10
+    #"I was thinking sort of Swiss Army knife hands with tools that pop out of the fingers."
+        "I like it," Professor Ziegler says.  "It could repair other robots on the battlefield."
+
+        "Right, it'll have a screwdriver finger, a lockpicking finger, a mini-USB port finger…" You decline to mention the bottle opener, though you think that could be popular with soldiers, too.
+        *gosub bump "military" 1
+        *set robot_arm "multitool hands"
+        Regardless, experience with a variety of different tools should prove useful in more than just
+        military robots.  You wonder if you could make a surgical robot with the same design.
+        *gosub bump "grace" 2
+    #"I plan to build a soft hand with a good sense of touch."
+        "Touchy-feely robots are not quite as easy to sell to DARPA," Ziegler says with a frown.
+
+        "I want my robot to get along with people," you say.  "That's a universally useful goal, regardless of who's funding it."
+        *gosub bump "empathy" 2
+        *gosub bump "grace" 1
+        *set robot_arm "humanoid hands"
+    #"I was thinking, why just two arms?  It will have lots of arms springing out of its back, like Inspector Gadget."
+        *set ziegler_relationship %+ 20
+        "You know who Inspector Gadget is?" Ziegler says incredulously.
+
+        "I saw reruns on the Cartoon Network website when I was young," you say.
+
+        "I loved that show," Professor Ziegler says dreamily.  "But you know who the unsung
+        hero of that show was?  The Chief.  Who was accountable in the end for the Inspector's
+        fuckups?  The Chief.  Who got blown up by a self-destructing message every episode in the
+        service of his country?  The Chief.  But nobody ever gave the Chief enough credit."
+
+        An awkward silence follows while your advisor ponders the character of the Chief.
+        *page_break
+        *achieve gadgeteer
+        *set achieved true
+
+        Finally, he shakes off his reverie.  "You know, with that many degrees of freedom, the
+        arms are very likely to crash into each other.  If they try carrying anything, it will
+        be even more of a control problem nightmare."
+
+        *if grace >= 2
+
+            "It's fine," you say.  "I've already come up with a solution to that."  You uncrumple a piece
+            of paper in your pocket with a bunch of equations, and hand it to him.  "It's true that
+            this would be difficult for an average student, but I think you'll find I'm not your
+            average student."
+            *gosub bump "grace" 2
+
+            Professor Ziegler squints at your mathematics, then nods his head slowly.
+            *set ziegler_relationship %+ 20
+        *else
+            Professor Ziegler's right—you're probably not experienced enough in robot control problems
+            to make the Inspector Gadget arms really reliable.
+            *gosub lose "grace" 1
+            To your surprise, Professor Ziegler smiles a little.  "But you're
+            right—Inspector Gadget arms are cool."
+        
+            You smile a little.  "Thanks."
+
+        *set robot_arm "Inspector Gadget arms"
+
+*set log_ch1_robot_arm robot_arm
+"Fine," Ziegler says, waving away further explanation.  "Carry on, then."  He turns to leave.
+"I've got to go take a call from a [i]New York Times[/i] reporter.  Funny how journalists all copy each
+others' stories, but each garble the message in a unique way."  
+
+He makes it to the door, then turns and says, "Oh, one more thing.  Do you think your
+robot can be ready by tomorrow?  Someone from the Air Force will be in town, and I told
+her your robot might be ready to show off by then."
+
+You feel your phone vibrating in your pocket.  Hmm, bad timing.  You resist the urge
+to check it while talking to your advisor.  But it's probably someone with a better offer
+for what to do tonight.
+
+
+*choice
+    #"No, there's no way this robot will be done by tomorrow.  Sorry."
+        *set ziegler_relationship %- 20
+        "Hmph," says Professor Ziegler.  "Well, [i]enjoy your weekend[/i]," he says
+        acidly.
+    #"The robot will be done, but a demo will be out of the question.  We need to test first."
+        Professor Ziegler grudgingly nods.  "I can see the logic of that.  Maybe we'll just
+        send her a demo video.  Then it only has to work once."
+    #"Of course."
+        *set ziegler_relationship %+ 20
+        Professor Ziegler nods appreciatively.  "Excellent!  Good attitude.  We'll make
+        a professor of you yet.  I'll tell Captain Rogers to meet you here tomorrow.
+        It's a nice, controlled environment, pretty consistent light levels…I think
+        not much can go wrong."
+        *set juliet_demo true
+        
+        "Yes, sir."
+
+Professor Ziegler turns and walks out of the machine shop.
+
+You find yourself unclenching your hands.
+
+*gosub whoCalled
+
+You spend the rest of the day drilling holes, polishing surfaces, cutting parts, and screwing things together.  
+
+When you are done, your robot's body stands before you: a ${robot_material} ${robot_leg_adj} robot with a ${robot_head} head and ${robot_arm}.
+The whole thing is about three feet ${robot_move = "flies" ? "long" : "tall"}.
+
+Now it only needs a name.  What will you name your robot?
+*choice
+    #Pickle.
+        To "pickle" data is to write it to disk so that it stays around.  You worked so much with
+        .pickle files while working on Pickle's learning algorithms that it became a natural name for
+        the robot.
+        *set robot_name "Pickle"
+    #Curry.
+        In programming, to "curry" is to create new functions out of old ones, very much like the way language
+        creates new thoughts by chaining words together.  Curry's mind will be similar, creating
+        something new out of many disparate parts.
+        *set robot_name "Curry"
+    #Miku.
+        You name your robot after Hatsune Miku, a Japanese artificial character celebrity.
+        Domino's once released an app in Japan in which a virtual Miku would dance on your pizza box.
+        If that isn't worthy of homage, you don't know what is.
+        *set robot_name "Miku"
+    *if (robot_material = "wooden") #Sapling.
+        *set robot_name "Sapling"
+        You decide to name your young wooden robot "Sapling" to emphasize to the people
+        around it that it is young and fragile.
+    *if (robot_arm = "T. Rex arms") #Rex.
+        *set robot_name "Rex"
+        You decide to name your robot Rex, after that most terrifying of beasts:
+        your old neighbor's dog, Rex.
+    *if (robot_leg_adj = "eight-legged") #Arachne.
+        You name your eight-legged robot after that great weaver Arachne, hoping its grace will 
+        likewise make the gods envious.
+        *set robot_name "Arachne"
+    *if (robot_leg_adj = "three-wheeled") #Wheelie.
+        You name your robot Wheelie.  Because it has wheels.  Yeah.
+        *set robot_name "Wheelie"
+    *if (robot_leg_adj = "three-wheeled") #Trisk.
+        You name your robot "Trisk" after its three-wheeled legs.
+        *set robot_name "Trisk"
+    *if (robot_leg_adj = "bipedal") #Daneel.
+        You name your robot "Daneel" in homage to Isaac Asimov's famous robot detective, R. Daneel Olivaw.
+        *set robot_name "Daneel"
+    *if (robot_leg_adj = "rotary-wing") #Drone.
+        You name your robot "Drone," forseeing a possible military future for your little friend.
+        *set robot_name "Drone"
+    *if (robot_arm = "Inspector Gadget arms") #Gadget.
+        "Go go gadget Gadget!" you say, unfolding your robot's extra arms behind it.  You'll have to figure out what to put in its little hands later.
+        *set robot_name "Gadget"
+    *if (grace < 2) #Beast.
+        You name your robot "Beast," as befits such an ugly thing.  But you think its intelligence will shine through its rough exterior.
+        *set robot_name "Beast"
+    *if (robot_arm = "multitool hands") #Cuisinart.
+        It slices!  It dices!  You name your robot "Cuisinart" after its multi-purpose hands.
+        *set robot_name "Cuisinart"
+    #Killall.
+        You decide to name it "Killall," not just because that's a very useful Unix command, but because that's what you hope it will do.
+        *set robot_name "Killall"
+        *set humanity %- 10
+    #Ariel.
+        You name your robot after the spirit servant from Shakespeare's [i]The Tempest[/i].  You think yourself
+        a little Prospero-like, after all; and perhaps, if Ariel is good, you will eventually set the robot free.
+        *set robot_name "Ariel"
+    #Caliban.
+        It's a rough thing, your robot, and you name it for the rough beast of a man in Shakespeare's [i]The Tempest[/i], who served his magician master unwillingly.
+        *set robot_name "Caliban"
+    #Famulus.
+        You name the thing "Famulus," the Latin word for servant from which "familiar" is derived.  You're a geek but you're a classy geek.
+        *set robot_name "Famulus"
+    #Gardyloo.
+        You expect your robot to be a little force for chaos wherever it goes, but want to be subtle about it.  You name it "Gardyloo" after what Renaissance people would yell before dumping crap out of their windows.
+        *set robot_name "Gardyloo"
+    #I'd prefer to come up with my own robot name.
+        *label nameRetry
+        What will you call your robot?
+        *input_text robot_name
+        Is "${robot_name}" correct?
+        *choice
+            #Yes.
+                *return
+            #No.
+                *goto nameRetry
+
+*assert (not(robot_name = "?"))
+
+*return        
+
+
+*label whoCalled
+Who was calling you while Professor Ziegler was talking to you?
+
+*temp caller
+*choice
+    #Elly Lao, a user experience designer and supportive friend.
+        *set e_relationship %+ 5
+        *set e_name "Elly"
+        *set e_last_name "Lao"
+        *set ehe "she"
+        *set ehim "her"
+        *set eer "her"
+        *set caller e_name
+    #Eiji Aomame, a manga artist and generally good guy.
+        *set e_relationship %+ 5
+        *set e_name "Eiji"
+        *set e_last_name "Aomame"
+        *set ehe "he"
+        *set ehim "him"
+        *set eer "his"
+        *set caller e_name
+    #My ambitious friend Josh Anderson, founder of the startup U.S. Robots.
+        *set josh_relationship %+ 5
+        *set e_name "Elly"
+        *set e_last_name "Lao"
+        *set ehe "she"
+        *set ehim "her"
+        *set eer "her"
+        *set caller "Josh"
+
+*gosub missedCall
+
+You notice that ${caller} also left you a text.
+*if caller = e_name
+    ${e_name} wants to meet for dinner at a jazz and sushi place in San Francisco, which is about
+    an hour north of you.
+    $!{ehe} also has tickets to a rendition of the musical [i]Pippin[/i] in which most of the characters
+    are robots.
+
+    Sounds like a date.  That's a little terrifying.
+*else
+    Josh wants to meet for dinner at a burger joint in East Palo Alto.  He says he
+    wants to run some project ideas by you, to see if you're interested in working with
+    his company on any of them.
+    
+    It occurs to you that if you were working with Josh, you might be able to get funding for your
+    education from him instead of Professor Ziegler's military grants.
+
+You text back…
+
+*temp agreedToCaller false
+*choice
+    #"Sounds great, see you then!"
+        "Great!"  ${caller} texts back.  "See you then!"
+        *set agreedToCaller true
+        *if caller = e_name
+            *set e_relationship %+ 5
+        *else
+            *set josh_relationship %+ 5
+    #"Afraid I can't tonight, sorry."
+        "Too bad," ${caller} texts back.  "Maybe next time."
+        *if caller = e_name
+            *set e_relationship %- 5
+        *elseif caller = "Josh"
+            *set josh_relationship %- 5
+        *else
+            *assert false
+    *if ((caller = e_name) and (not(juliet_demo))) #"Busy tonight, but do you want to come by tomorrow to see the robot?"
+        "Okay, sure" is the response.  This probably isn't ${e_name}'s preferred way to see you,
+        but you really want to work on your robot tonight.
+        *set e_demo true
+    #I don't reply—I'd prefer to pretend I missed the text.
+        *set humanity %- 5
+        Sometimes, you just don't feel like talking to people.  This is one of those times.
+*return
+
+*label nsfProposal
+
+*set nsfSaid true
+"NSF grants are a killing field," Ziegler grouses.  "The amounts of money are tiny compared to defense research, and you have to be the best of the best to get any funding at all."
+
+You privately wonder if that's just Professor Ziegler's perception.
+You decide to try to apply to an NSF grant if you can find the time.
+
+*return
+
+*label pronouns
+Now that ${robot_name} has a body, it might be time to treat ${robot_name} more like a person.
+With what pronouns will you refer to ${robot_name}?
+
+*choice
+    #"It" is just fine.  It's not human.
+        *set rhe "it"
+        *set rer "its"
+        *set rhim "it"
+        People shouldn't get too attached to robots, you reason; they're specifically built for tasks
+        that people don't want to do.
+        *gosub bump "military" 1
+    #I will refer to her as feminine.
+        *set rhe "she"
+        *set rer "her"
+        *set rhim "her"
+        Encouraging people to think of ${robot_name} as humanlike, as opposed to
+        objectlike, should help ${rhim} get along with people.
+        *gosub bump "empathy" 1
+    #I will refer to him as masculine.
+        *set rhe "he"
+        *set rer "his"
+        *set rhim "him"
+        Encouraging people to think of ${robot_name} as humanlike, as opposed to objectlike,
+        should help ${rhim} get along with people.
+        *gosub bump "empathy" 1
+    #I would prefer to use entirely new pronouns for robots:  rhe, rer, and rhim.
+        You equally dislike the objectification implied by "it" and the genderedness implied by
+        "he" and "she."  Robots are their own things, you reason.
+
+        Hmm, robot-he, robot-she…"rhe"?  You decide to balance the other pronouns between the
+        genders:  "rer" for the possessive, "rhim" for the objective.  It may be difficult
+        to get anyone else to use the words, but as long as your robots use them amongst themselves,
+        you'll be happy.
+        *set rhe "rhe"
+        *set rer "rer"
+        *set rhim "rhim"
+        *gosub bump "autonomy" 1
+*return
+
+
+*comment —————End fork 1:  Night with E———————
+
+*label nightWithE
+
+A contemplative sax solo greets you as you open the door to Yoshi's.  The place is a little cramped
+and very busy.  A tiny jazz quartet has set up in the far corner of the restaurant—piano,
+drumset, sax, and a petite Japanese woman in a kimono holding a mic but directing her attention
+to the soloist.
+
+*if e_name = "Elly"
+    Near the band, Elly Lao is reading a book at her table.  She's dyed her hair rose red—that's
+    new.  Her straight locks come down to her jaw.  She has pale skin, but her eyes look Pacific.  She's wearing a black
+    cardigan over a lavender top, a black-and-white checkered skirt, and leather shoes.  Her book
+    is titled [i]The Design of Everyday Things[/i], and its cover depicts a red teapot with its
+    spout facing the same way as the handle.
+*else
+    Near the band, Eiji Aomame is studying a copy of Scott McCloud's 
+    [i]Understanding Comics[/i], a book about the art of visual storytelling written
+    in comic form.  He's wearing a red bowtie, a fuzzy, blue sweater, black slacks, and a nice
+    pair of black loafers.  There's a subtle trace of red in his black hair, but it might just be the light.  Still intent on his book, he takes out a pencil
+    from his pocket and begins sketching from the book on a napkin.
+*page_break
+You join ${ehim} at the table.  "Hey."
+
+$!{ehe} looks up and smiles.  "Hey!"
+*if e_name = "Elly"
+    She leans down to put her book in her purse.
+*else
+    He puts away his pencil, book, and napkin.  You catch a glimpse of Astro Boy,
+    an old Japanese anime character, on the napkin.
+    
+"What have you been up to?" ${e_name} asks.
+
+"I've been working all day on a new robot," you reply.  "Just the frame's built
+right now but I wish I'd had time to add motors and start its mind running
+today.  It probably could have learned a lot from even this conversation."
+
+$!{ehe} casts you a skeptical look.  "What would you hope it to learn, exactly?"
+*choice
+    #"The rhythm of normal social interaction."
+        $!{ehe} looks a little disappointed.  "Is that all," ${ehe} says.  "Something about the
+        word 'normal' never quite did anything for me."
+        *set e_relationship %- 5
+        
+        "Oh, but the robot ${rhim}self is going to be far from normal."
+        
+        "Really."
+    #"How to reconnect with an old friend."
+        $!{ehe} grins.  "Right on!  I had the same idea."
+        *set e_relationship %+ 10
+    #"How not to talk to a ${ehe = "he"? "guy" : "girl"}.  Negative examples are important."
+        $!{ehe} laughs.  "This is why I like you.  That dry, techie humor."
+        *set e_relationship %+ 20
+
+"Do you want to come by tomorrow and see ${rhim} after I power ${rhim} on?" you ask.  "It's
+going to be really cool."
+
+${e_name} shrugs.  "Sure, sounds good.  It is a Sunday tomorrow, after all.  And
+I'm curious to see you interacting with one of your robots.  You used to rave
+about them all the time, but I don't think I ever saw one."
+${e_name} cocks ${eer} head to one side.  "What is it with you and robots, anyway?"
+*choice
+    #"Haven't you ever wanted to change the world?"
+        ${e_name} tilts ${eer} head, considering you.  "Yes.  Definitely."  $!{ehe} looks as
+        though ${ehe} wants to ask something else.
+
+        *set e_relationship %+ 10
+
+    #"I think I just find them comforting, somehow.  Like very confused pets."
+        ${e_name} grins.  "I could say the same about you."
+        $!{ehe} leans over and ruffles your hair.
+        *set e_relationship %+ 10
+        *choice
+            #"Don't ever do that again."
+                "Sorry, geez," ${ehe} says.
+                *set e_relationship %- 30
+            #"Umm, I actually worked kind of hard on my hair for tonight…."
+                ${e_name} freezes.  "Oh.  I'm very sorry.  I should have thought."
+                There's an awkward pause in the conversation.
+                *set e_relationship %- 10
+            #"Thanks."
+                ${e_name} grins.
+            #Ruffle ${eer} hair playfully.
+                You fall into fits of giggling, trying to mess up each other's hair, until the
+                waitress awkwardly approaches.
+                *set e_relationship %+ 10
+    #"I think you'll find I'm not the most introspective person in the world."
+        ${e_name} taps ${eer} lips with ${eer} chopsticks contemplatively.  "Hmm, but would a
+        person who wasn't introspective say that?"  $!{ehe} points the chopsticks at you. 
+        "You're more complicated than you let on, ${name}."
+        *set e_relationship %+ 10
+
+"Are you two ready to order?"
+
+You've both hardly looked at the menu, so you have to tell the waitress to come back.  The 
+tastiest maki rolls look like they're named after jazz standards.  When the waitress returns, you
+tell her you'll have…
+
+*fake_choice
+    #The Invitation.
+        "Speaking of invitations, I'm sort of surprised you accepted mine," ${e_name} says.  
+
+        You shrug.  "I guess I'm interested in getting to know you better," you say.
+        *set our_song "Invitation"
+    #The Don't Get Around Much Anymore.
+        "Story of your life?" ${e_name} says, sympathetic.
+
+        "Pretty much," you say.
+
+        "I could help you with that," ${ehe} offers.
+
+        "I might take you up on that," you say.
+        *set our_song "Don't Get Around Much Anymore"
+    #The Paper Moon.
+        When the waitress leaves, ${e_name} says, "'Paper Moon' is such a cute song." $!{ehe}
+        sings, "'But it wouldn't be make believe if you believed in me!'"  $!{ehe} considers you.
+        "Doesn't surprise me—you're the sort of person who wants to make dreams real."
+
+        "Thanks," you say.
+        *set our_song "Paper Moon"
+
+*if (not(e_romantic))
+    Are you attracted to ${e_name}?
+    *choice
+        #Yes.
+            *set e_romantic true
+        #No.
+            *set e_romantic false
+
+*if (e_relationship >= 50)
+    You're beginning to think ${ehe} might like you.  Like, like-like.
+*if e_romantic
+    Score!
+*else
+    Awkward.
+        
+"So okay," ${ehe} says.  "Let's say that you succeed.  Robots are among us.  What's good about
+that?  What do you want them to do?"
+*temp toldEConquest false
+*label whatAreTheyGoodFor
+*choice
+    *if (toldEConquest) #"I am serious."
+        $!{ehe} gives you an intensely searching look.
+        *if e_romantic
+            You suddenly fear that you've revealed too much.
+        Finally, ${ehe} says quietly,
+        "I don't know what you really mean, but I hope you don't start getting involved in
+        making robots for war.  There are enough ways to die in this world.  Nobody 
+        wants more of them."
+        *set e_relationship %- 30
+        
+    *hide_reuse #"They could do all kinds of things for us.  Do the dishes, mow the lawn…"
+        "But it seems like people could do those things, too," ${ehe} says.  "Why not just
+        pay a real person to do them?"
+        *label whyRobots
+        *choice
+            *hide_reuse #"Robots could do them more cheaply."
+                "Hmm," ${ehe} says.  "It seems like every time things go from being done
+                by people to being done by machines, there's usually something lost in the process.
+                Modern fonts are nice, but they can't compare to a good calligrapher."
+                $!{ehe} shrugs.  "Is that really what moves you about robots?"
+                *choice
+                    #"Yes.  I want to change the face of industry and be successful."
+                        ${e_name} considers this.
+                        
+                        $!{ehe} nods.  "Fair enough.  I guess that's why you and Josh get along so well."
+                        *set e_relationship %- 5
+                    #"Well, to take your font example, word processing democratized the power to make beautiful words, and put them in the hands of everybody.  That's what I think everyone should have:  someone to watch over them."
+                        "That's surprisingly sweet," ${e_name} says, impressed with you.  "Okay.  I can see that."
+                        *set e_relationship %+ 20
+                        *set humanity %+ 5
+                    #"No, not really."
+                        "Then why do you want robot servants?
+                        *goto whyRobots
+            *hide_reuse #"If robots do the boring stuff, we'll have more time to do creative things."
+                "I don't know," ${e_name} says.  "In the short term, it seems like it will put a
+                lot of people out of work.  I know when past jobs got mechanized, more skilled jobs
+                opened up, but I'm not sure that can continue indefinitely.  You think it's possible?
+                To try to make it so that nobody needs to do boring work again?"
+                *choice
+                    #"Yes."
+                        ${e_name} nods to ${ehim}self and smiles.  "Well, I knew you were a dreamer."
+                        *set e_relationship %+ 10
+                    #"No, you're right, it would only put real people out of work.  Let me try again."
+                        *goto whyRobots
+            #"Leave me alone, robots are just cool!"
+                "Ha, fair enough," ${ehe} says.  "I figured it was something like that.  Sometimes,
+                you just do things because they tickle a little part of you that's entrenched so
+                deep, it's a reason in its own right.  I think that's perfectly respectable."
+                *set e_relationship %+ 10
+    #"I think it would be interesting to have someone to talk to that isn't a human being.  I wonder what they'd say."
+        ${e_name} smiles.  "That's pretty cool.  Though, there are all kinds of people in the world
+        who are very different from you.  Do you try to talk to them?"
+        *choice
+            #"Sure.  I like meeting new people.  But a robot would be different."
+                "Different how?"
+
+                You shrug.  "I don't know.  That's what I want to find out."
+
+                ${e_name} nods.  "You're crazy, all right," ${ehe} says. $!{eer} pleased smile
+                makes it seem like a compliment.
+                *set e_relationship %+ 10
+            #"No, good point."
+                ${e_name} shrugs.  "I'm not trying to convince you not to like robots—I just want to figure out where you're coming from."
+            #"Come on.  You and I both know most people are boring."
+                ${e_name} frowns.  "Hmm, I can see what you're saying, and yet,
+                I try not to believe it.  A lot of times, people can surprise you.
+                You just have to ask the right question."
+                *set e_relationship %- 10
+    *hide_reuse #"If I said 'take over the world,' would you think I was crazy?"
+        "Yes," ${ehe} says.  "No, seriously."
+        *set toldEConquest true
+        *goto whatAreTheyGoodFor
+    #"I just want to make something beautiful."
+        ${e_name} blinks.  "Huh.  I wasn't expecting you to say that."
+       
+        You take out your smartphone, the one that's going to become
+        ${robot_name}'s mind, and show ${e_name} pictures of the frame
+        under construction.  "Check it out."
+
+        *if grace >= 2
+            "You know, the more I look at it, the clearer it becomes that you have a really keen design sense,"
+            ${ehe} says.  "I'm impressed."  
+        
+            "Thanks," you say.
+
+            "I think you're really going to do something amazing someday," ${ehe} says.  "I know it."
+
+            "Cool," you say, grinning a little.
+            *set e_relationship %+ 30
+        *else
+            ${e_name} makes a little not-impressed face.
+
+            "I know, I know," you say.  "I have a ways to go."
+            
+            "It's okay," ${ehe} says.  "That's what I like about you.  You're a dreamer, in it
+            for the long haul."
+            *set e_relationship %+ 10
+
+The waitress brings your order of ${our_song} maki and you dig in to eat.
+
+Just then, your phone buzzes.  You take it out to glance at it:  it's reporting
+malware on your phone's memory card.
+
+"Is something wrong?" ${e_name} asks.
+
+"One sec."  You quickly glance at the warning details.  Apparently, some kind of
+virus has decided to take control of your phone's microphone.  It appears to
+be sending the packets of audio data somewhere.
+
+Huh.  Of all the times to get a security warning on your phone.  Who the heck
+would want to listen to your conversation?  You really can't think of anyone.
+
+*choice
+    #Power off the phone and don't worry about it.
+        You decide that this meal is not going to get sidetracked by computer
+        security concerns.  You power off the phone.
+        
+        "Not important," you say with a smile.  ${e_name} smiles back,
+        grateful that you're not going to get distracted by your phone during
+        the meal.
+        *set e_relationship %+ 10
+    #Ask to search ${e_name}'s phone for evidence of similar malware.
+        "Can I see your phone for a second?" you ask.
+        
+        ${e_name} visibly tenses.  "Why?"
+        
+        "I just got a weird security warning.  I thought maybe you'd see the same
+        thing."
+        
+        "Unlikely."  ${e_name} shows you ${eer} phone.  "Apple?"
+        
+        You show ${ehim} yours.  "Android."
+        
+        "Thought so."
+        
+        You grin.  "Likewise."
+        
+        You blurted that without really thinking about it—of [i]course[/i]
+        ${e_name} would be an Apple user—and now you sort of regret it,
+        like maybe this is a thing that would come between you, the way
+        people who owned Gamecubes when you were young were just a little standoffish from
+        the Playstation owners and vice versa.
+        *set e_relationship %- 5
+        You suppose you could insist on checking ${eer} phone for malware,
+        but it might seem a little crazy at this point.
+        
+        *choice
+            #Press to see ${e_name}'s phone, stating that someone appears to be listening to the conversation.
+                "I hate to break it to you, but someone appears to be eavesdropping on our
+                conversation," you tell ${e_name}.  "That's what my phone just reported."
+                
+                ${e_name} recoils.  "But why?"
+                
+                "I don't know," you say.  "Can you think of anything?"
+                
+                ${e_name} shakes ${eer} head but says, "Mom said she often thought
+                people were following her around and asking her weird questions,
+                too, but I don't think she ever figured it out."  $!{ehe} hands
+                you ${eer} phone.  "Here, you can check if you want."
+                
+                You spend most of the rest of the meal downloading security apps, doing forensics, and reading random things about
+                the state of spyware on the Internet.  You find some stories from
+                a few years ago about the NSA spreading malware on millions of
+                phones.  But after the flap, people seemed to have mostly forgotten
+                about it.  From your packet captures and the executable
+                checksums on the phone, it looks like this malware is a variant on
+                that spyware.
+         
+                *set e_relationship %- 10
+                *set humanity %+ 5
+                "I think maybe this is government spyware," you say reluctantly.
+                
+                "Oh," ${e_name} says doubtfully.
+                *if e_relationship >= 50
+                    $!{ehe} then forces a grin.  "Well then, let's give that
+                    poor NSA analyst a nice conversation to listen to."
+                    
+                    You laugh.  "All right."  $!{ehe}'s probably right—now
+                    that you know the conversation is being tapped, you could
+                    chat about innocuous things and it won't matter much.
+                    But as you put your phone in your pocket, you power it down anyway.
+            #Just ask to see ${e_name}'s phone again but don't mention the audio recording part.
+                ${e_name} refuses, looking distraught that you asked.  "Sorry.  A phone is really personal."
+                
+                "I understand."
+                
+                *set e_relationship %- 10
+            #Let it be.
+                You decide not to press the issue—it only make things weird.
+                
+    #Just keep copies of the data as it transmits—it'll be useful for training ${robot_name}.
+        You've read that it's possible to train machine-learning algorithms to tell the difference
+        between awkward and non-awkward pauses, and the correct amount of time to wait before
+        responding to show that you're listening but engaged.  Since the malware just seems
+        to be sending data when either of you speaks, you realize that even though the data's
+        encrypted, you could probably at least use the timing information to improve your new
+        robot's social skills.
+        *if e_relationship > 50
+            You're pretty sure this will be a pretty good example for your robot of people
+            getting along famously.
+            *gosub bump "empathy" 2
+        *else
+            Even though this isn't the best conversation to be setting as an example,
+            negative examples are important, too.
+            *gosub bump "empathy" 1
+
+*comment Fast forward to end of meal, and this should give a general reaction — if it went badly
+*comment enough, omit option to go to Pippin.
+*if e_relationship < 50
+    You continue your meal in somewhat awkward silence.
+    
+    "Check please," ${e_name} says.  You have the uncanny sensation that ${e_name} is
+    making a mental list of all the online social circles from which you are about to be removed.
+    *page_break
+    This always happens, you tell yourself that night as you crawl into bed.
+    You stare across the room at ${robot_name}, propped against the closet.
+    
+    What you want is a friend who is not constantly evaluating you.  Someone who will stick
+    with you in life, no matter what.
+    
+    Tomorrow, you will have one.
+    
+    *set log_ch1_evening ("You went out with "&e_name)&" for sushi, but it went badly, and you told yourself your robot companion would make a better friend than any human."
+    *finish Chapter 2: Machine, Learning
+*else
+    You continue the meal chatting about random topics and enjoying the food.
+    
+    ${e_name} talks about how it's difficult to meet new people after graduating from college.
+    *if e_name = "Eiji"
+        In addition, the time difference with Japan is substantial, and it makes it difficult for him
+        to chat with his family as often as he'd like.
+        *if e_romantic
+            He repeatedly expresses a desire to have
+            some kind of family, until you become fairly certain he is dropping a hint.
+    *else
+        Since Elly is half Asian, she runs into a surprising number of people doing online dating
+        who are either Asian or white and can't accept that she's both.
+        *if e_romantic
+            She looks to you meaningfully and appreciatively when she says this, until you finally realize
+            she might be dropping a hint.
+    *if e_romantic
+        In college, you had never quite believed someone like ${e_name} would be interested in
+        you.  But apparently, ${ehe} is.
+            
+*page_break
+[i]Pippin[/i] turns out to be about the subject you've been thinking about
+the most lately:  how to live an extraordinary life instead of an ordinary one. 
+${e_name} sold you on this particular production because
+the supporting cast—everyone but Pippin and the love interest—are all robots.
+You can see in the play's opening number that the robots are following
+preprogrammed steps, and are not intelligent in themselves; but then, that doesn't
+surprise you.  In 2019, artificial intelligence is still mostly being used
+for handy websites and smartphone apps, not robots.
+        
+The first song, "Corner of the Sky," is about Pippin's feeling that he
+doesn't belong anywhere, and wondering what the purpose of his life is.
+The robots, which look like imitations of Robbie the Robot from [i]Forbidden Planet[/i],
+are toiling at ordinary lives while Pippin sings about
+his wish for something better.
+
+"This is called an 'I wish' song," ${e_name} whispers to you.  "I heard on
+[i]This American Life[/i] that all musicals have to start with a song that is about
+what the protagonist longs for.  It's like the unwritten rule of musicals."
+
+You think for a moment about what your "I wish" song would be,
+and suddenly recall your conversation with the robot ${dream} this morning:
+it was, perhaps, a peculiar sort of "I wish" song.  You think of ${robot_name}'s
+new frame you built today.  You suppose whatever future that dream
+was hinting at, you still have a long way to go.
+
+*if (e_relationship >= 60) and e_romantic
+    You are startled to find that ${e_name} has taken hold of your hand.
+    *choice
+        #Squeeze ${eer} hand.
+            *set e_relationship %+ 10
+            You squeeze ${eer} hand back and realize that,
+            just like that, you're kind of a couple now.  You had no
+            idea it could be so easy.
+            *set romance e_name
+        #Quietly panic and don't react.
+            Unsure of what to do, you awkwardly keep your hand where it is.
+            You know that if you mess this up, you might lose ${ehim} as a
+            friend as well.  $!{ehe} casts a curious glance your way, and you
+            nervously smile back.  Looking puzzled, ${ehe} returns ${eer}
+            attention to the musical.
+        #Yank away your hand and let ${ehim} know it's not like that.
+            You jerk away your hand.  ${e_name} looks surprised and a little hurt.
+            *set e_relationship %- 10
+            "Sorry," ${ehe} whispers.  "I thought…sorry."
+*else
+    *if e_romantic
+        It occurs to you that if you're interested in ${e_name}, now would be a good time to hold ${eer} hand.
+        *choice
+            #Do it.
+                $!{ehe} casts a surprised glance your way but smiles and seems pleased.  Yes!
+                *set e_relationship %+ 20
+                *set romance e_name
+            #Lame!  I put my arm around ${ehim} instead.
+                *if e_relationship >= 55
+                    $!{ehe} seems surprised but pleased.  It's probably safe
+                    to say that this is the start of your romantic relationship.
+                    *set e_relationship %+ 10
+                *else
+                    $!{ehe} squirms a little bit under your arm.  Maybe you
+                    could have pulled this off if you really hit it off at dinner,
+                    but you get the feeling ${ehe} thinks it's a little presumptuous.
+                    *set e_relationship %- 6
+            #I am not getting any signals that ${ehe} wants to be more than friends.  No.
+                It's true—${e_name} is the sort of
+                ${e_name = "Elly" ? "girl" : "guy"} who would make a move first
+                if ${ehe}'s interested.  You suspect ${ehe}'s not actually that
+                into you.
+    *else
+        You were worried coming into the performance that ${e_name} might be
+        awkwardly interested in you, but your worries seem to have come to
+        nothing.  ${e_name} watches the musical with interest, and doesn't make
+        a move.
+
+The play goes through a series of vignettes in which Pippin leaves one lifestyle
+after another—he's not content to be a soldier, nor a king, nor a simple man
+in love.  As Pippin sings about how he's going to leave the woman he met in the
+countryside to achieve something great, you think…
+*comment Hard either-or choice here is intentional—no watering down with an out.
+*temp pippinChoice
+*choice
+    #He is right to leave a simple life to achieve something extraordinary.
+        You have always done the same thing: when given the choice between
+        doing social things or concentrating on your work, you always choose
+        the option that will lead to greatness in the end.
+        *set humanity %- 10
+        *gosub bump "grace" 1
+        *gosub bump "autonomy" 1
+        *if (romance = e_name)
+            You resolve that, as cute as ${e_name} is, you will not let this
+            distraction get in the way of your dreams.
+            *set e_relationship %- 5
+        
+        Pippin appears to make a different choice:  presented with a ring of fire
+        to jump through, he turns back and returns to his love.  But you would
+        jump through that ring of fire…and who knows what will happen as a result?
+        *set pippinChoice "extraordinary"
+    #He is a fool to give up his love just because he has delusions of grandeur.
+        You resolve that you will not be like this self-involved protagonist.
+        You will, above all, live a good life, and if it means not making it into
+        the history books, well, they can talk about someone else, for all you care.
+        *set humanity %+ 10
+        *set e_relationship %+ 10
+        
+        You're pleased to see that Pippin makes the same choice:  presented with a
+        ring of fire to jump through to achieve greatness, he decides not to go
+        through with it, and returns to his love.  Isn't that the hero's journey,
+        to come back to the place you knew and appreciate it?  Why not love your
+        home from the beginning?
+        
+        But perhaps you're the sort of person who will get wrapped up in history
+        whether you will it or not.  Who knows?
+        *set pippinChoice "ordinary"
+*set log_ch1_evening ("You then went to a sushi place and a production of [i]Pippin[/i] with "&e_name)
+*set log_ch1_evening (log_ch1_evening&", where you vowed ")
+*if pippinChoice = "ordinary"
+    *set log_ch1_evening (log_ch1_evening&"to not let ambition get in the way of your relationships with other people.")
+*else
+    *set log_ch1_evening (log_ch1_evening&"to not let others get in the way of your dreams.")
+*if e_relationship < 50
+    *comment Both Pippin comments are a fine place to end, but if the date's going well,
+    *comment e comes back to your place.
+        
+    *finish Chapter 2:  Machine Learning
+
+Since the evening is going well, ${e_name} asks to see more of your robots.
+"But that would mean going back to my place," you say,
+*if e_romantic
+    and then you say, "Oh."
+*else
+    but ${e_name} doesn't seem to mind.  "It is Saturday, after all.  You don't
+    mind if I crash with you, do you?"
+    
+    "Not at all," you say.
+*page_break
+
+You return to your apartment and flick on the light, somewhat embarrassed at
+the unmade bed and mess of clothes you've left on the floor.
+
+"I'm sorry you couldn't see my robot in action tonight," you say.  "Here,
+check this out."  You show ${e_name} a little, eight-legged robot with an old
+smartphone for a body.
+
+"What is it with you and phone robots?" ${e_name} asks.
+
+"Well, I hate to throw out my old phone when my plan gives me a free one,"
+you respond.  "The processor's usually still as powerful as a desktop from a few years ago.
+So I use my old phones for robots.  This one does simultaneous localization
+and mapping, or SLAM for short."
+
+You power on the robot, and let it go on your floor.  It promptly starts ramming
+the trash can next to your bed.
+
+"SLAM, you say," ${e_name} says, amused.
+
+"It worked in college…."
+
+"Isn't it a little dark in here?" ${e_name} says.  $!{ehe} peers up at your
+fishbowl-shaped light fixture.  "I think one of the bulbs is out up there."
+$!{ehe} stands on a chair, quickly unscrews the light fixture, and hands it
+to you.  Indeed, one of the two light bulbs underneath is out.
+
+"Thanks," you say, a little embarrassed.  The light fixture is also hella dusty.
+
+"You have another?" ${ehe} asks, unscrewing the dead bulb.
+
+"No," you say, then an idea strikes you.  "I think pickles are luminescent
+when you electrify them.  I saw it on the Discovery Channel once.  I have
+one in my fridge."
+
+*set log_ch1_evening (log_ch1_evening&"  You both went back to your place afterward, ")
+
+${e_name} gives you a dubious but curious look.
+*temp lightsOn false
+*choice
+    #"C'mon.  Pickle."
+        *set lightsOn true
+        ${e_name} laughs.  "Okay, sure."
+
+        You go into the fridge, find a rather large dill pickle of the kind
+        sold at Renaissance Faires, and stick a couple of spare wires you have
+        lying around into the ends as ${e_name} watches with amusement.  You put
+        on some gloves to avoid electrifying yourself, and climb onto the chair
+        beneath the light fixture.
+
+        (Note to player:  Before engaging in any electrified pickle shenanigans
+        yourself, be sure to go buy a copy of Penn and Teller's book,
+        [i]How to Play With Your Food[/i].  Please keep a copy of the book open
+        to the page with the electrified pickle trick while attempting this stunt,
+        preferably with a handwritten note that says something like, "I'm so
+        glad I learned this trick from this book and not any product of Choice
+        of Games LLC!")
+
+        "Be careful," ${e_name} says as you wiggle the pickle into the socket.
+
+        Soon, your room is bathed in green light from your pickly sun.  You
+        jump down from the chair.
+        *page_break
+        *achieve pickled
+        *set achieved true
+
+        "That's weird and awesome," ${e_name} says, grinning.
+        *if e_relationship >= 60
+            "Like you."
+
+    #"You're right, it's probably not bright enough for the robot. I'll ask my neighbors for a CFL bulb."
+        *set lightsOn true
+        ${e_name} waits as you knock on your neighbor's door.  He comes to the door wearing
+        only a towel, and the room behind him is somewhat dimly lit.  You think
+        you hear a woman's giggle from inside.
+
+        "A CFL bulb?  Sure, I hate those things.  Totally kill the mood."  You
+        hesitate to follow your neighbor into his room, and he returns in short
+        order with a CFL bulb.
+
+        When you return to ${e_name}, your phone-robot is still poking around
+        the room in the dark.
+
+        You climb onto your chair again.  "Hey, how many machine learning experts
+        does it take to change a light bulb?"
+
+        "How many?" ${e_name} asks.
+
+        "Just one, but it doesn't work very well—${female ? "she" : "he"} just
+        keeps pointing to the sun and expects the light bulb to get the idea."
+
+        ${e_name} laughs.
+
+        *page_break
+        *achieve bright
+        *set achieved true
+
+        The room is awash in harsh light from the CFL bulb.
+        
+    *if (e_romantic) #"Or we could just leave the lights off…."
+        *if e_relationship > 50
+            "What did you have in mind?" ${e_name} says coyly.
+        *else
+            "Um?" ${e_name} says nervously.
+        
+*if lightsOn
+    Your phone-robot is now exploring the four corners of the room,
+    showing curiosity about every stray piece of laundry on the floor.  You realize
+    that if you copy the map it makes, you could give ${robot_name} a head start
+    on exploring the world tomorrow.
+    *gosub bump "autonomy" 1
+
+*if (not(e_romantic))
+    *set e_relationship %+ 10
+    You continue to show ${e_name} various robots
+    you've made over the years, until the long day finally wears on you.
+    You set up ${e_name} on the couch, giving ${ehim} some extra sheets.
+    *if juliet_demo
+        "Would you be interested…" You begin to invite ${e_name} to ${robot_name}'s
+        activation demo tomorrow but then you trail off.  Captain Rogers will be there,
+        and you're sure that ${e_name} would not approve of your demoing for the military.
+        
+        "What was that?"
+        
+        "Never mind," you say.  "Good night!"
+        
+        "Good night."
+    *else
+        "Would you be interested in seeing ${robot_name}'s activation tomorrow?" you ask.
+        
+        "Of course!" ${e_name} says.
+        *set e_demo true
+        
+        You smile.  "Thanks."
+        
+    You remain awake well into the night, anticipating the moment tomorrow
+    when you finally bring ${robot_name} to life.
+    *set log_ch1_evening log_ch1_evening&" where you showed "
+    *set log_ch1_evening log_ch1_evening&e_name
+    *set log_ch1_evening log_ch1_evening&" various robots, and promised to show "
+    *set log_ch1_evening log_ch1_evening&eer
+    *set log_ch1_evening log_ch1_evening&" an even better robot the next day."
+    *finish Chapter 2:  Machine, Learning
+    
+*temp eLeaves true
+*choice
+    *if (e_romantic) #Kiss ${e_name}, then call it a night.
+        *set e_relationship %+ 10
+        *gosub eKissSub
+
+        *set romance e_name
+        
+    *if (e_romantic) #Kiss ${e_name}, then see if things can go farther.
+        *if lightsOn
+            You realize that the new lighting situation is not exactly conducive to making a move,
+            so you quickly turn it off.
+        *gosub makinAMove
+        
+    #Hug ${e_name}.
+        *set e_relationship %+ 10
+        You give ${e_name} a warm hug.
+*if eLeaves    
+    "I should go," ${e_name} says, checking ${eer} smartphone.  "I'll miss
+    the last train."
+    
+    "All right," you say.  "It was good seeing you."
+    
+    "You too."
+    
+    *if juliet_demo
+        You wish you could invite ${e_name} to see your demo of
+        ${robot_name} tomorrow, if only to give ${ehim} a clearer idea of your best robot work.
+        But Captain Rogers will be there, and you're pretty sure
+        ${e_name} would not approve of your demoing for the military.
+        
+        "Good night, then," you say.
+        
+        "Good night."  
+        *set log_ch1_evening (log_ch1_evening&" and regretted having already agreed to demo for Captain Rogers the next day.")
+    *else        
+        You invite ${e_name} to watch you activate ${robot_name} tomorrow, 
+        *if e_relationship >= 50
+            and ${ehe} happily agrees, though neither of you calls it a "date."
+            *set e_demo true
+            *gosub willShowELog
+        *else
+            but ${ehe} says ${ehe} has too many errands to run tomorrow, and
+            bids you adieu.
+            *set log_ch1_evening log_ch1_evening&" and invited "
+            *set log_ch1_evening log_ch1_evening&ehim
+            *set log_ch1_evening log_ch1_evening&" to attend "
+            *set log_ch1_evening log_ch1_evening&robot_name
+            *set log_ch1_evening log_ch1_evening&"'s activation the next day, but "
+            *set log_ch1_evening log_ch1_evening&ehe
+            *set log_ch1_evening log_ch1_evening&" declined."
+            *comment TODO next game:  make string concatenation not terrible
+    You remain awake for much of the night,
+    *if e_demo
+        your mind racing with plans for what to show ${e_name} tomorrow.
+    *else
+        *set humanity %- 5
+        thinking about what you could have said and done differently.  People
+        are complicated.  You're looking forward to talking to ${robot_name} instead.
+*else
+    Still—later, when ${e_name} is already asleep, your mind has already
+    returned to ${robot_name}.
+    
+    *if juliet_demo
+        What will the Air Force officer think of ${robot_name} tomorrow?
+        Despite yourself, you spend the night imagining one scenario after another,
+        worrying about whether ${robot_name} will be ready or not.
+        *set log_ch1_evening log_ch1_evening&" but could not stop thinking about your demo the next day."
+    *else
+        *set e_demo true
+        You'll have so much to show ${e_name} tomorrow.
+        You can hardly wait.
+        *gosub willShowELog
+   
+*finish Chapter 2:  Machine, Learning
+
+
+*label willShowELog
+*set log_ch1_evening log_ch1_evening&" and eagerly anticipated showing "
+*set log_ch1_evening log_ch1_evening&e_name
+*set log_ch1_evening log_ch1_evening&" your robot the next day."
+*return
+
+*label makinAMove
+In the dark, you kiss ${e_name}.
+*gosub eKissSub
+You start to remove ${eer} layers.
+*if e_relationship >= 70
+    *set romance e_name
+    $!{ehe} helps you.  
+    *if e_name = "Elly"    
+        Her underthings are red, like her coat.
+    *else
+        His boxers are red, like his bowtie.
+    
+    What happens next, we will not embarrass you with here.  It is too sacred; you
+    know already that you will carry scenes from this night with you for a long
+    time, as examples of a time when you were absolutely, without reservation,
+    happy.  The fact that your happiness doesn't involve robots at all confuses and frightens you a
+    little bit, but you feel your world getting just a little larger.
+    *set humanity %+ 10
+    *set eLeaves false    
+    *set log_ch1_evening (log_ch1_evening&" totally made out,")
+*else
+    *set e_relationship %- 5
+    "Stop," ${e_name} says, grabbing your hand.  "Too soon."
+    
+    "Sorry," you say.  "I thought…"
+
+    "You had the right idea," ${ehe} says.  "But I've had a lot of things go wrong in the past because I trusted too soon.  You okay with waiting?"
+
+    "Sure," you say, because it seems like there's nothing else you can say.
+    *set log_ch1_evening log_ch1_evening&" made a rejected attempt to seduce "
+    *set log_ch1_evening (log_ch1_evening&ehim)&","
+
+*return
+
+
+*label eKissSub
+*set romance e_name
+*set log_ch1_evening (log_ch1_evening&" kissed,")
+*if e_relationship >= 60
+    $!{ehe} enthusiastically returns the kiss.
+    *return
+*else
+    $!{ehe} seems uncertain but willing to go along with the idea.
+    *return
+
+*comment ————-End fork 2:  Meeting Josh——————-
+
+*label meetWithJosh
+*set log_ch1_evening "You then met up with Josh, your startup CEO friend, "
+
+By the way, how do you feel about your ambitious, robot-loving, entrepreneur friend?
+*choice
+    #Business people are superficial.
+        Any other broad category of people you'd like to generalize about?  But okay, I get the picture—you like people who care more about ideas than money.
+        *set humanity %- 2
+        *set josh_romantic false
+    #Good guy to hang around.
+        Yeah, he's pretty laid back for a startup CEO.  Not that this is saying much.  
+        *set josh_romantic false
+    #It's nice to have a sycophant who recognizes my genius.
+        I'm not sure he'd put it that way, but as a non-technical person who has an obsession with robots, he does tend to give you a pass when you say shit like that.
+
+        *set josh_relationship %+ 20
+        *set humanity %- 10
+        *set josh_romantic false
+    #Kinda cute, I'd say.
+        You often wondered, when you both were undergraduates, if your
+        attraction to Josh was reciprocated.  You could never tell whether his
+        demurrals that he was "too busy" were genuine or not.
+        *set josh_romantic true
+
+*if josh_romantic
+    *set log_ch1_evening log_ch1_evening&" whom you've always thought was kind of cute."
+*else
+    *set log_ch1_evening log_ch1_evening&" to discuss business."
+
+Ozzie's is a burger place in East Palo Alto which, like East Palo Alto in general,
+is an affordable and unpretentious place filled with frugal software engineers
+who could afford much more, but don't want it.  Rock-themed wallpaper
+has been scrawled on by patrons from long ago,
+and an old arcade version of [i]Guitar Hero[/i] is sitting unloved in the corner.
+
+Josh Anderson is hunched over his swanky brick of an Alienware gaming laptop.
+He's wearing a gray hoodie, clearly inspired by Mark Zuckerberg, or at least his
+character in [i]The Social Network[/i] (which Josh has watched way too many times),
+and giant, orange Beats by Dre headphones.  His head is moving to the beat of
+whatever 70s hair metal he is listening to, but he appears intensely lost
+in thought about whatever is on his laptop.
+
+When you approach, he slips down his headphones, which blare some kind of female cover of Led
+Zeppelin until he closes his laptop.
+
+"This is the business dinner you're expensing?" you ask.
+
+Josh sniffs.  "I'm iconoclastic, not irresponsible.  Besides, I like their burgers."
+
+A waiter comes by with a menu.  Apparently, their burgers are all rock-themed.
+You'll have…
+
+*choice
+    #The Bohemian Rhapsody:  a maple bacon burger.
+        *set josh_relationship %- 5
+        "Oh man, that sounds pretentious," Josh says.
+        
+        "It sounds delicious," you insist.
+        
+        "You listened to Ira Glass on the drive here, didn't you?" Josh accuses.
+        
+        "What do you have against public radio?"
+        
+        "Cars are for listening to music," Josh says, as if stating the obvious.
+        
+    #The Hotel California Burger:  guacamole on a veggie patty.
+        *set josh_relationship %+ 5
+        "Ah, 'Hotel California,'" Josh says.  "I had that stuck in my head
+        all of senior year, after I decided to move out here to do a startup."
+        
+        "Is it as exciting as you imagined?" you ask.
+        
+        "Definitely," Josh says.  "There are a ton of other startups around, and the
+        money's finally starting to flow again the way it did during the Internet
+        startup glory days, only toward hardware and gadgets instead of websites."
+        
+        "So, it's a good time for robots," you say.
+        
+        "You bet."
+        
+    #The Freebird:  a chicken sandwich.
+        "You know, people joke about 'Freebird,' but it's actually a really
+        great song," Josh says.  "It's about doing what you've got to do, no matter
+        what people think.  'And this bird you cannot change!'"
+        
+        "Does that mean you're not going to criticize me for ordering a chicken sandwich in
+        a burger joint?" you ask.
+        
+        "I didn't say that," Josh says.  "What's wrong with you?"
+        
+You decide to cut to the chase.  "I was wondering if you would pay my tuition for a
+few years if I agree to work for you part-time, and then full-time
+after graduation."
+
+Josh looks a little skeptical.  "How much would that cost, exactly?"
+
+You tell him, and he looks a little relieved.  "Okay.  As business R&D goes,
+that's actually not too bad.  Man, academics have a cheap labor market."
+
+That stings a little because you hadn't really thought of yourself as "labor,"
+but Professor Ziegler seems to think similarly.  Maybe Josh understands Professor
+Ziegler's point of view better than you.
+
+"Well, I've got a few projects going that you could consult on."  He digs into
+a laptop bag at his feet, and produces a tablet computer.  "Just
+tell me which one you want to work on."
+
+"Does that mean yes?" you ask hopefully.
+
+*page_break
+
+"If you find something you like, sure," Josh says.  "You're a good candidate.  We just
+need to find a good project fit."
+
+*gosub chooseProject
+*if not(business_choice = "none")
+    *set josh_relationship %+ 20
+    *set josh_in_business true
+    *set funding josh_business_name
+
+    "Do you still want to see ${robot_name} tomorrow?" you ask.
+
+    "Nah, that's all right," Josh says.  "Not unless you really want to."
+    *set log_ch1_business_choice business_choice
+    *set log_ch1_evening log_ch1_evening&"You agreed to help his company make robot "
+    *set log_ch1_evening (log_ch1_evening&log_ch1_business_choice)&"s."
+*else
+    *set log_ch1_evening log_ch1_evening&"  He pitched a variety of business possibilities, but none of them really moved you."
+
+*if (not(josh_romantic))
+    *goto joshCallItANight
+*else
+    You realize that, having made this deal, it could make any romantic
+    overtures a little awkward.  But on the other hand, this does seem like
+    as good a time as any to try to get to know Josh better.
+    *choice
+        #I suggest an evening of video games at Josh's place.
+            *set josh_relationship %+ 10
+            "Right on!" Josh says.  "I knew you were my kind of ${player_informal}."
+            
+            Josh's bachelor pad speaks to how much
+            time Josh spends working:  the fridge is empty, the walls are mostly
+            undecorated, and the primary decor in the living room are the
+            entertainment center and the Scotch of the Month offerings on the mantle.
+            Josh is hardly better than you at the game you play—some kind
+            of SF-themed first-person shooter where energy swords face off against
+            shotguns—but he seems excited just to have someone to relax with.
+            You ask to play with bot opponents because you're curious to see what these
+            games use for AI, but you're disappointed to find that they're clearly
+            just finite-state machines following preprogrammed patterns.
+            
+            You play until it's very late and Josh says, "Well, I'm done.
+            I don't know about you."
+            *choice
+                #Try to feel out whether or not Josh is interested in kissing.
+                    "Yeah, I'm tired."  You put your head on Josh's shoulder and wait to see how he'll
+                    react.  When he puts his arm around you, you think you've got him.
+
+                    You tilt your head up, making your lips as kissable as possible.  A bright lad,
+                    Josh gets the message.
+                    *set josh_relationship %+ 5
+                    You find he's a good kisser—eager, but not overbearing.
+                    *set romance "Josh"
+                    When he comes up for air, he says, "Wow, ${name}!  I really
+                    never knew…"
+                    
+                    "Now you do," you say.
+                    
+                    *choice
+                        #Take Josh to the bedroom.
+                            *set josh_relationship %+ 10
+                            You lead Josh by the hand back to his bedroom.  He still decorates
+                            like an undergraduate, you find, with the main decoration a
+                            framed movie poster for the robot movie [i]Short Circuit[/i].  Still, in bed, he's charmingly attentive and eager to
+                            please.
+                            *page_break
+                            *set log_ch1_evening log_ch1_evening&" Then you two went back to his place and totally did it."
+                            *goto inBedNextToJosh
+                        #Cuddle with Josh the rest of the night.
+                            You snuggle next to Josh, and the two of you become very cozy as you chat
+                            about random things until the early hours of the morning.
+                            *set josh_relationship %+ 10
+                            When the time approaches bird o'clock, the two of you slip off to his bed,
+                            not to have sex, but to practically admit that you're not leaving tonight.
+                            *set log_ch1_evening log_ch1_evening&" Then you two went back to his place and cuddled for the rest of the night."
+                            *goto inBedNextToJosh
+                            
+                        #Say good night.
+                            *goto postRomanticJoshHeadingHome
+                #Call it a night.
+                    *goto postRomanticJoshHeadingHome
+        #Let's keep it professional and call it a night.
+            *goto joshCallItANight
+        #I ask Josh to come back to my place "for coffee."
+            *set josh_relationship %+ 10
+            Hearing the quotation marks around "for coffee," Josh grins.
+            "Just like old times.  Only, I hope you don't have a roommate
+            we have to sexile this time."
+            
+            "I live alone now," you say.  "And robots aren't very warm at night."
+            
+            "Aw," Josh says, brushing your hair back.  You kiss.
+            
+            *set romance "Josh"
+            *set log_ch1_evening log_ch1_evening&" Then you two went back to your place and totally did it."
+            *page_break
+            *goto inBedNextToJosh
+            
+
+*label chooseProject
+Josh does some swiping and tapping,
+and hands the tablet to you.  The screen shows a sketch of a robot that 
+has Inspector Gadget-like arms coming out of its back, with each one holding a
+different surgical instrument:  scalpels, calipers, a needle with thread.
+"Option one:  surgery bot."
+
+*choice
+    #"I was taking graduate classes in control theory my first year of college.  Let's do it."
+
+        Indeed, you worked harder than anyone you knew freshman year.
+        *gosub bump "grace" 3
+        You had to skip out on a lot of social opportunities, but hey, there's always a
+        tradeoff.
+        *set humanity %- 10
+
+        "Well, that was easy," Josh says.  "Surgeon bots it is."
+        *set business_choice "surgeon"
+        *return
+    #"What if we instead focused on providing robots with good patient skills, who could act as nurses?"
+        Josh considers this.  "That might work.  Have you spent a lot of time on 
+        robotic social interaction?"
+
+        "Yes," you say.
+        *gosub bump "empathy" 1
+
+        "And you really think robots will provide a level of care similar to that of a human in
+        the next five years?"
+        *choice
+            #"Yes."
+                "Interesting." Josh doesn't look really convinced.
+                *set humanity %- 10
+            #"No, not really, but we're looking for alternatives that are cheaper, not better."
+                *set humanity %- 10
+                "Interesting point," Josh says, rubbing his chin.
+            #"No, good point.  Probably not."
+                "I didn't think so," Josh says.
+        "I wouldn't rule out the idea, but this business plan is for surgeons at the moment.  Let
+        me show you the next one, though, and you can see if that's up your alley."
+    #"I think my robots tend to be a little too unpredictable for the operating room."
+        Josh frowns.  "'Unpredictable' isn't really a selling point for most products," he says.
+
+        You're disappointed, because you usually like making robots that explore the world and surprise you.
+        *gosub bump "autonomy" 1
+
+        "But if you want to join this venture," Josh continues, "the next option might be your best bet."
+
+Josh does a swipe on the tablet, and the new image displayed is a little, knit owl with cartoon
+eyes and tiny wings.
+
+"Option two:  the toy market.  Now, the key to succeeding in the toy market is being
+able to make a ridiculously cheap product.  It just has to be cute, not smart."
+
+*choice
+    #"I've done some Furby hacking.  I could probably whip up something cheap but smart for you."
+        You've never been very sentimental about your robots, and always felt free
+        to hack them apart in the name of making them do something cooler.
+        *gosub lose "empathy" 1
+        *gosub bump "autonomy" 1
+
+        "Great, let's run with that," Josh says.
+        *set business_choice "stuffed animal"
+        *return
+    #"Great, I've made intelligent stuffed animals before.  Let's do it."
+        Josh seems impressed.  "You made an intelligent stuffed animal already?  When you were young?"
+
+        "Sure, I can knit."
+        *gosub bump "empathy" 3
+
+        "Nice," Josh says.  "All right, let's do it."
+        *set business_choice "stuffed animal"
+        *return
+    #"Let's see what else you've got."
+        "Sure," Josh says.  "Option three."
+
+The tablet now displays a photo of a sleek quadcopter drone.
+
+"Prison drones," Josh says.  
+"Prisoners are now sometimes using illegal subdermal transmitters
+to communicate with each other.  It's making it easier for them to coordinate prison breaks
+and riots.  These drones would
+be equipped with jammers to stop the prisoners' signals."
+
+Josh can't help but crack a grin.  "Also, it looks kind of sweet, doesn't it?"
+
+*choice
+    #"That sounds like a worthy goal.  Let's do it."
+        "Great," Josh says.
+        *gosub bump "military" 3
+        *set business_choice "drone"
+        *return
+    #"I feel bad for the prisoners."
+        Josh looks genuinely puzzled.  "Why?  They broke the law.  And if they communicate
+        with those sensors, they're breaking the law even more."
+
+        "The law isn't always right," you say.  "And even when it is, it's nice to show a little
+        mercy.  'O, it is excellent to have a giant's strength, but it is tyrannous to use it
+        like a giant.'"
+        *set humanity %+ 10
+
+        Josh gives you a skeptical look.
+
+        "Shakespeare.  [i]Measure for Measure.[/i]"
+
+        "Did you get that quote from a Magic card?"
+
+        "Maybe."
+
+        "Giant's Strength:  Red red, give +2/+2 to-"
+
+        "Yeah, yeah, it's from the Magic card," you say.
+
+        "Just checking," Josh says.
+
+    #"Have you thought about marketing this to the military as well?"
+        "Indeed I have," Josh says.  "I've been in contact with one Juliet Rogers, an
+        Air Force acquisitions officer, and she says they're very interested."
+        
+        *if juliet_demo
+            "Really," you say.  "I'm supposed to give a demo for her tomorrow, I think."
+
+            "Small world!" Josh says.  "Tell her I said hi."
+            *set juliet_relationship %+ 10
+            *set josh_relationship %+ 10
+        *else
+            You squirm a little—you think that's the name of the acquisitions officer Professor Ziegler
+            wanted you to meet tomorrow.  Oops.
+        
+Josh does some tapping and swiping, and the three images of robot prototypes now share the tablet screen.
+"So, do any of these sound promising?"
+
+*comment These all return
+*choice
+    #I'll work on the surgeon bot.
+        "Excellent," Josh says.  You yourself look forward to learning more about robot control in the process.
+        *set business_choice "surgeon"
+        *gosub bump "grace" 2
+        *return
+    #I'll work on the owl bot.
+        "Excellent," Josh says.  You yourself look forward to learning more about how to make robots cute.
+        *set business_choice "stuffed animal"
+        *gosub bump "empathy" 2
+        *return
+    #I'll work on the drone.
+        *set business_choice "drone"
+        "Excellent," Josh says.  You yourself look forward to learning about how to make robots that could be used in combat.
+        *gosub bump "military" 2
+        *return
+    #"I don't know, Josh," you say.  "I always dreamed of something…bigger."
+
+        Josh raises his eyebrows.  "Oh?  Like what?"
+
+        *fake_choice
+            #"Like a robot that could be the best friend anybody ever had."
+            #"Like a robot that wasn't just as smart as a human, but smarter."
+            #"Like literally bigger.  A huge colossus of a robot, able to crush anything in its path."
+            #"Like a robot that wasn't just a single surgeon bot, but one that could control a whole hospital all at once."
+
+        Josh blinks a little at this.  "And are you going to make this robot any time soon?"
+
+        "The robot I just made is the first step," you say.
+
+        Josh looks impressed.  "Mind if I see this robot?"
+
+        "Sure," you say.  "I'll show it to you tomorrow."
+
+        "Tomorrow!" Josh says, excited.  "I thought you were talking about the far future.
+        All right.  Tomorrow.  Sounds good.  If I like it, I'll buy the rights to the
+        IP from you, and you won't have to work on any of the projects I just mentioned.
+        You can just work on your robot."
+
+        "Awesome," you say.
+
+        *set josh_relationship %+ 10
+        *return
+
+*label joshCallItANight
+You spend the meal catching up with talk of the latest games and bands, two
+of Josh's favorite subjects, and then call it a night.  You head home,
+your mind buzzing with excitement.  You can't wait to finish your robot
+tomorrow.
+*if josh_in_business
+    Josh's ${business_choice} robots will be nothing compared to ${robot_name}.
+*else
+    You're sure Josh will be blown away.
+*finish Chapter 2: Machine, Learning
+
+*label postRomanticJoshHeadingHome
+You decide not to push things romantically any further.
+                    
+"Thanks for a lovely evening," you say.
+
+"My pleasure!" Josh says enthusiastically.
+
+As you drive home, you wonder what Josh will think of ${robot_name}.
+You'll find out tomorrow, you suppose.
+*finish Chapter 2:  Machine, Learning
+
+*label inBedNextToJosh
+Later that night, with Josh asleep next to you, you lie awake
+thinking about ${robot_name}.  What will ${rhe} be like?  Will
+Josh be impressed, or will he fail to see the point?  You hope you've
+bought yourself a little bit of breathing room with this affair.
+Knowing Josh, he'll probably be more forgiving of ${robot_name}'s
+idiosyncracies if you're dating.
+
+And Josh is sweet, in his own way.  He's talked about
+how he wants to change the world.  That's something you want, too.
+
+You fall asleep to visions of long lines of ${robot_name}s
+rolling off the assembly lines.  It will happen someday.  And Josh
+will help you do it.
+*finish Chapter 2: Machine, Learning
+
+*comment —————End fork 3:  Teach the robot words—————-
+
+*label teachTheRobotWords
+*set robot_language +1
+*set log_ch1_evening "Then you went back to your place to teach "
+*set log_ch1_evening log_ch1_evening&robot_name
+*set log_ch1_evening log_ch1_evening&" some words."
+
+You head back to your apartment, where you spend several hours working on
+the final touches to ${robot_name}'s natural language processing code.
+
+*gosub languageQuestion
+
+With the code done, you then briefly add just enough motors to allow ${robot_name}
+to explore your room.  It's a quick job—you'll do a more thorough one
+tomorrow.  Your smartphone won't have much power for the motors right now anyway.
+
+Finally, you upload the code to your smartphone and plug it into
+${robot_name}'s back.  You touch the icon labeled "${robot_name}," and a big, red button
+fills the screen.
+
+Your finger hovers over the button.  You probably want the first word ${robot_name}
+learns to be significant, somehow.  What is the first thing ${robot_name} will
+see when you power ${rhim} on?
+
+*choice
+    #I will start ${robot_name} in front of a mirror.
+        You place ${robot_name} in front of the full-length mirror in your
+        room, then hit the image of the big, red button on ${rer} smartphone back.
+        
+        $!{rhe} examines ${rhim}self, turning one way, then the other.
+        $!{rhe} seems very interested in ${rhim}self.
+        *gosub bump "autonomy" 2
+        
+        You clear your throat, then say, "That's…"
+        *choice
+            # "…you."
+                "You," ${robot_name} repeats.
+                *gosubonce voiceChoice
+                
+                ${robot_name} examines ${rhim}self further, and says again, "You."
+                
+                "No, that's [i]you[/i]," you say, pointing at ${robot_name}.
+                
+                "You," ${robot_name} repeats, puzzled.
+                
+                Perhaps you started out with a difficult word.
+                *if empathy >= 2
+                    But you gave ${robot_name} enough of a social understanding
+                    that, by acting out a little scene with some [i]Star Wars[/i] action
+                    figures that just happen to be nearby,
+                    ${robot_name} gets the concepts of "I" and "you."
+                    *gosub bump "empathy" 2
+                *else
+                    You try a few more rounds of this, then just say, "${robot_name}."
+                    
+                    "Not you?" ${robot_name} asks.
+                    
+                    "${robot_name}," you insist.
+                    
+                    "${robot_name} is not a you," ${robot_name} says.
+                    
+                    You try a little more to straighten things out.
+                    You manage to get ${robot_name} to learn ${rer} name, but
+                    you suspect ${robot_name} may have strange ideas about
+                    personhood as a result of this conversation.
+                    *gosub bump "autonomy" 1
+            # "…${robot_name}."
+                "${robot_name}," ${rhe} repeats.
+                *gosubonce voiceChoice
+                
+                "${robot_name}," the robot says again.  You think the idea
+                is sinking in that ${robot_name} is a unique individual in the
+                world.
+                *gosub bump "autonomy" 1
+                
+                Will you also introduce ${robot_name} to the concept that ${rhe}
+                is a robot?
+                *choice
+                    #Yes, it's important for understanding what ${rhe} is.
+                        "${robot_name} is a robot," you say.  You show
+                        ${robot_name} other robots from around your room—the spider-like robot you made with your last smartphone,
+                        the large, Lego robot you made in fourth grade that was taller
+                        than yourself.   "Robot.  Robot."
+                        
+                        "Robot."  ${robot_name} then turns to you.  "Robot?"
+                        *choice
+                            #"In a sense, yes."
+                                "Robot," ${robot_name} repeats, satisfied.  You
+                                hope that by identifying with ${robot_name}, ${rhe}
+                                will feel more similar to you than
+                                different.
+                                *gosub bump "empathy" 1
+                                *gosub bump "autonomy" 1
+                            #"No, human."
+                                "Human."
+                                *gosubonce humanRobotDifference
+                    #No, I want ${robot_name} to believe ${rhe} is a real child for as long as possible.
+                        You would like ${robot_name}'s conditions for learning to
+                        be as close to those of a real child as possible.
+                        You decide to politely decline to point out
+                        the differences between ${robot_name} and
+                        a real child at the moment.
+                        *gosub bump "empathy" 1
+                    #No, ${rhe} is unlike anything that has come before.  I want no preconceptions.
+                        You decide to not introduce ${robot_name} to the idea of "robot" early—you don't think it's a very useful category.
+                        ${robot_name} will be ${rer} own thing.
+                        *gosub bump "autonomy" 1
+                        
+                        Instead, you just contrast
+                        ${robot_name}'s name with your own.  You turn ${robot_name} to face you.
+                        What do you call yourself?
+                        *gosubonce whatRobotCallsYou          
+            # "…a robot."
+                "Robot," ${robot_name} repeats.
+                *gosubonce voiceChoice
+                
+                "Robot," ${robot_name} says again.       
+                $!{rhe} then turns to you.
+                
+                "Human," you say.
+                
+                "Human," ${robot_name} says.
+                *gosubonce humanRobotDifference
+    #I will start ${robot_name} looking at me.
+        You activate ${robot_name} facing you.  $!{rhe} looks into your eyes.
+        You've heard that many animals imprint on the first living thing
+        they see, usually their mother, and that they love this being instinctually.
+        You're trying to create this experience for ${robot_name} as well.
+        *gosub bump "empathy" 2
+        As ${robot_name} looks into your eyes, you call yourself…
+        *gosubonce whatRobotCallsYou
+        
+    #I will start ${robot_name} looking out the window, and I will just start naming things.
+        You place ${robot_name} at the window, looking outside, then hit the big,
+        red button.
+        
+        You begin pointing to things.  "Tree.  Car.  Person.  Flower.  Grass."
+        
+        "Tree, car, person, flower, grass!"  ${robot_name} says.
+        *gosubonce voiceChoice
+        
+        As you list off the things, ${robot_name} ${robot_move} up to the window,
+        pressing ${rer} ${robot_head} head against the glass.  You can tell ${rhe}
+        is itching to explore the great, wide world, so full of things—and
+        is a little frustrated by the glass separating ${rhim} from it all.
+        *gosub bump "autonomy" 2
+
+*comment robot_language is 0, 1, or 2, with 1 meaning "basic words."
+*set robot_language 1
+You then pick ${robot_name} up and put ${rhim} down in the center of the room
+to allow ${rhim} to explore at will.  But at first, ${rhe} simply seems overwhelmed by the possibilities.
+
+You decide to call this state:
+
+*choice
+    #"Confusion."  I then give ${robot_name} a reassuringly straightforward order.
+        "Confusion," ${robot_name} repeats.
+        
+        "Go to the closet," you say.
+        
+        ${robot_name} then heads toward the closet.  ${robot_name} seems less
+        agitated now—${rhe} has learned it is sometimes reassuring to let
+        other people make decisions.
+        *gosub bump "military" 2
+    
+    #"Curiosity."  I allow ${robot_name} to choose where to go.
+        "Curiosity," ${robot_name} repeats.
+        *gosub bump "autonomy" 2
+        $!{rhe} ${robot_move} up to your closet and peeks inside.  But it's
+        something of a mess in there, and ${rhe} quickly gets ${rer} ${robot_leg_adj}
+        moving parts caught in your clothing.
+    #"Loneliness." I stand farther away to make the point.
+        "Loneliness," ${robot_name} says forlornly.
+        *gosub bump "empathy" 2
+        Why did you do that?
+        *choice
+            #I wanted ${robot_name} to understand what it is like to have sympathy for others.
+                "Many people feel loneliness," you tell ${robot_name}.  "But you can help."
+                
+                "Yes, ${robot_calls_you}."
+                *gosub bump "empathy" 1
+                *set humanity %+ 10
+            #I wanted ${robot_name} to always need me.
+                You hope that in making ${robot_name} dependent on you, you will
+                never have to worry about ${rhim} turning against you.
+                *gosub lose "autonomy" 2
+                *gosub bump "empathy" 2
+                *set humanity %- 20
+You pick ${robot_name} up in your hands.  $!{rhe} wriggles nervously.
+
+"I got you, I got you," you say.  
+
+"You got me."  $!{rhe} continues to wriggle.
+
+"Stop."
+
+Your robot becomes still in your hands.  You decide to teach ${rhim} that the word
+for this state is…
+*choice
+    #"Peace."
+        "Peace," ${robot_name} repeats back.  You have taught ${rhim}
+        to be unafraid and unaggressive in unfamiliar situations.
+        *gosub bump "empathy" 2
+        *gosub lose "military" 1
+    #"Trust."
+        "Trust," ${robot_name} repeats back as you set ${rhim} on the ground.
+        You have taught ${rhim} to have a little faith that when a human
+        does something ${rhe} doesn't understand, things will turn out well.
+        *gosub bump "empathy" 1
+        *gosub bump "military" 1
+    #"Helplessness."
+        "Helplessness," you say, and to emphasize the point, you swing
+        ${rhim} around so that ${rhe} can't get ${rer} bearings.
+
+        "Help…less…ness…"
+
+        As you set it on the ground again, you realize that your robot
+        has probably learned to mistrust others, and trust in ${rhim}self instead.
+        *gosub bump "autonomy" 2
+    #"Weakness."
+        "Weakness," ${robot_name} repeats back, and you have set the
+        stage for ${rhim} to fear and despise failure—in ${rhim}self and others.
+        *gosub bump "grace" 1
+        *gosub bump "autonomy" 1
+
+By now, it is near midnight, and you have another busy day ahead of
+improving ${robot_name}.  You get ready for bed, leaving ${robot_name}
+plugged into the wall with your cell phone charger.
+
+"Stay there," you tell ${rhim}.
+
+*if autonomy > empathy
+    You can hear ${robot_name}'s motors revving on and off as you drift off to
+    sleep.
+    
+    When you wake up, you find ${rhim} in your closet, out of power, having
+    escaped the power tether.
+    
+    You seem to have made yourself a curious, somewhat rebellious robot.  You
+    suppose that will make life interesting.
+*else
+    ${robot_name} obediently stays very still—so still that, while you are
+    drifting off to sleep, you glance down at ${robot_name}
+    just to make sure ${rer} code didn't crash.
+    
+    But ${rhe} is still there, looking up at you adoringly, and you think ${rhe}
+    will probably remain like that all night.
+*finish Chapter 2: Machine, Learning
+
+*label languageQuestion
+What language do you program your robots in?
+*choice
+    #C++.  Speed of thought is all.
+        Like the game industry, which also still uses C++, you understand that speed is most important; all
+        other concerns are secondary.  Your code is full of asterisks, ampersands, tildes, parentheses,
+        and arrows, like the blackboard of a hyperactive professor who has had too much to drink.  Somewhere
+        in this code is a memory leak or mismanaged pointer that will cause your robot to crash, or
+        possibly decide to take over the world.  In the meantime, the code is quite fast.
+        *gosub bump "autonomy" 1
+    #Python.  It has the best tools for understanding words.
+        The existence of Python's Natural Language ToolKit made Python the clear choice for your robots.
+        The right word can change the course of history; your robot should understand the
+        importance of using the right one.  With fewer parentheses and more recognizable words than other
+        languages, your code itself looks a little like poetry.
+        *gosub bump "empathy" 1
+    #Go, the most beautiful language.
+        Programs written in Go tend to be incredibly short
+        and expressive, almost like Zen koans in their brevity and power.  You believe there is beauty in
+        simplicity; in code, less is more.  You also enjoy using the command that gives the language its
+        name, as you imagine saying to your robots one day:  Go think!  Go create!  Go live!
+        *gosub bump "grace" 1
+    #Java.  Everybody uses Java.
+        Well, somebody out there probably appreciates your traditionalism and perseverance.
+        *gosub bump "military" 1
+*gosub space
+*return
+
+*label voiceChoice
+$!{rhe} speaks in…
+*choice
+    #…a monotone, like a classic robot.
+        Accurate prosody is still hard, so you decided to avoid the problem by implementing
+        a stereotypical robotic monotone for ${robot_name}'s voice.  It's better, you think,
+        if robots don't pretend to be something they're not.
+        *gosub bump "autonomy" 1
+    #…a sequence of autotuned notes, like human speech but more musical.
+        ${robot_name} speaks with each syllable on a different note of a major scale, rising or falling in thirds and fifths when asking a question, expressing doubt,
+        or providing a contrast.
+        The lilting result sounds pleasant and a little otherworldly.
+        *gosub bump "grace" 1
+    #…a nasal, excitable voice, like a hyperactive munchkin with a cold.
+        ${robot_name}'s voice bubbles with infectious enthusiasm for the world.
+        *gosub bump "empathy" 1
+*return
+
+*label humanRobotDifference
+"What is the difference between 'human' and 'robot'?" ${robot_name} asks.
+
+*choice
+    #"Robots serve humans.  Robots must obey humans."
+        "Robots must obey humans," ${robot_name} repeats back.
+        *gosub lose "autonomy" 1
+        *gosub bump "military" 1
+        *gosub bump "empathy" 1
+
+        ${robot_name} goes on to ask many other questions but
+        that one sticks in your mind.  For some reason, you feel a
+        little bad about it, but you feel it's important to establish
+        who's in charge early on.
+    #"Robots are more intelligent but humans are more creative."
+        ${robot_name} looks confused, and you realize that you haven't
+        actually programmed enough word meanings for ${robot_name} to make
+        any sense of this assertion.  You futz with ${robot_name}'s grammar file a little,
+        then try again.
+        "Robot explore parameter is low.  Robot error tolerance parameter is low.
+        Human explore parameter is high.  Human error tolerance parameter is high."
+
+        "Okay," your robot says.  You're still not really sure how well that
+        sank in, but you think ${robot_name} grasps a little of the idea:  humans and
+        robots are good at different things.
+        *gosub bump "empathy" 2 
+    #"Robots are better."
+        "Robots are better," ${robot_name} echoes back.  "Value of robot
+        is now set to value of human plus one."
+
+        "Exactly."
+        *gosub bump "autonomy" 2
+    #"Nothing."
+        "Robot is human," ${robot_name} says.  "Human is robot."
+
+        "Yes," you say.  It seems like a good first approximation—you don't want your little robot to start out with an inferiority complex.
+        *gosub bump "autonomy" 1
+        *gosub bump "empathy" 1
+*return
+
+*label whatRobotCallsYou
+*choice
+    #"Master."
+        *set robot_calls_you "Master"
+        You hope this will cause ${robot_name} to generally be obedient and accept
+        ${rer} place in the world.
+        *gosub bump "empathy" 1
+        *gosub bump "military" 2
+        *gosub lose "autonomy" 1
+    #"Sensei."
+        *set robot_calls_you "Sensei"
+        You hope that by comparing yourself to a wise teacher, ${robot_name} will
+        approach life as a skill to be mastered.
+        *gosub bump "grace" 2
+    #"${name}."
+        *set robot_calls_you name
+        You think being on a first name basis with ${robot_name} will help you
+        get along.
+        *gosub bump "empathy" 2
+    #"$!{player_sir}."
+        *if female
+            *set robot_calls_you "Ma'am"
+        *else
+            *set robot_calls_you "Sir"
+        You hope the traditional appellation of respect will instill in ${robot_name}
+        a sense of propriety and established order, without implying a lack of
+        respect for ${rhim}self.
+        *gosub bump "military" 1
+        *gosub bump "empathy" 1
+    *if (female) #"Mother."
+        *set robot_calls_you "Mother"
+        You think having ${robot_name} call you "Mother" will make ${rhim} think of
+        ${rhim}self as more human—even if it weirds some people out.
+        *gosub bump "empathy" 1
+        *gosub bump "autonomy" 1
+    *if (not(female)) #"Father."
+        *set robot_calls_you "Father"
+        You think having ${robot_name} call you "Father" will make ${rhim} think of
+        ${rhim}self as more human—even if it weirds some people out.
+        *gosub bump "empathy" 1
+        *gosub bump "autonomy" 1
+"${robot_calls_you}," you say.
+
+"${robot_calls_you}," ${robot_name} repeats.
+*return
+
+*comment —————Utilities——————-
+
+*label bump
+*if {arg0} >= 100
+    *return
+*if (arg1 = 0)
+    *return
+*temp statVal {arg0}
+*temp counter arg1
+*temp plusString ""
+*label keepBumping
+*if ((counter > 0) and ({arg0} <= 100))
+    *set plusString plusString&"+"
+    *set counter (counter - 1)
+    *setref arg0 ({arg0} + 1)
+    *goto keepBumping
+(${plusString}$!{arg0})
+*return
+
+
+*label lose
+*if {arg0} <= 0
+    *return
+*if (arg1 = 0)
+    *return
+*temp counter arg1
+*temp minusString ""
+*label keepLosing
+*if ((counter > 0) and ({arg0} > 0))
+    *set minusString minusString&"-"
+    *set counter (counter - 1)
+    *setref arg0 ({arg0} - 1)
+    *goto keepLosing
+(${minusString}$!{arg0})
+*return
+
+
+*label space
+
+*return
